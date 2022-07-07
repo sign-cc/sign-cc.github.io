@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SignCc">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Sha1加密源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sha1">
+<meta property="og:url" content="https://sign226.github.io/posts/9300bf14/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Sha1加密源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-07T02:16:20.000Z">
+<meta property="article:modified_time" content="2022-07-07T02:22:04.620Z">
+<meta property="article:author" content="SignCc">
+<meta property="article:tag" content="加密源码">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Sha1 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sign226.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","app_key":"VF6l5XVkCCe4IDy6xqkhusUe","server_url":"https://0yd4gwf8.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>今有大鱼名为咸</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Sha1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-07 10:16" pubdate>
+          2022年7月7日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Sha1</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Sha1加密源码"><a href="#Sha1加密源码" class="headerlink" title="Sha1加密源码"></a>Sha1加密源码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/*</span><br><span class="hljs-comment">CryptoJS v3.1.2</span><br><span class="hljs-comment">code.google.com/p/crypto-js</span><br><span class="hljs-comment">(c) 2009-2013 by Jeff Mott. All rights reserved.</span><br><span class="hljs-comment">code.google.com/p/crypto-js/wiki/License</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">var</span> <span class="hljs-title class_">CryptoJS</span> = <span class="hljs-title class_">CryptoJS</span> || <span class="hljs-keyword">function</span> (<span class="hljs-params">e, m</span>) &#123;<br>    <span class="hljs-keyword">var</span> p = &#123;&#125;, j = p.<span class="hljs-property">lib</span> = &#123;&#125;, l = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        &#125;, f = j.<span class="hljs-property">Base</span> = &#123;<br>            <span class="hljs-attr">extend</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                l.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-variable language_">this</span>;<br>                <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> l;<br>                a &amp;&amp; c.<span class="hljs-title function_">mixIn</span>(a);<br>                c.<span class="hljs-title function_">hasOwnProperty</span>(<span class="hljs-string">&quot;init&quot;</span>) || (c.<span class="hljs-property">init</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                    c.<span class="hljs-property">$super</span>.<span class="hljs-property">init</span>.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>)<br>                &#125;);<br>                c.<span class="hljs-property">init</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = c;<br>                c.<span class="hljs-property">$super</span> = <span class="hljs-variable language_">this</span>;<br>                <span class="hljs-keyword">return</span> c<br>            &#125;, <span class="hljs-attr">create</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">extend</span>();<br>                a.<span class="hljs-property">init</span>.<span class="hljs-title function_">apply</span>(a, <span class="hljs-variable language_">arguments</span>);<br>                <span class="hljs-keyword">return</span> a<br>            &#125;, <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            &#125;, <span class="hljs-attr">mixIn</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> c <span class="hljs-keyword">in</span> a) a.<span class="hljs-title function_">hasOwnProperty</span>(c) &amp;&amp; (<span class="hljs-variable language_">this</span>[c] = a[c]);<br>                a.<span class="hljs-title function_">hasOwnProperty</span>(<span class="hljs-string">&quot;toString&quot;</span>) &amp;&amp; (<span class="hljs-variable language_">this</span>.<span class="hljs-property">toString</span> = a.<span class="hljs-property">toString</span>)<br>            &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">init</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">extend</span>(<span class="hljs-variable language_">this</span>)<br>            &#125;<br>        &#125;,<br>        n = j.<span class="hljs-property">WordArray</span> = f.<span class="hljs-title function_">extend</span>(&#123;<br>            <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, c</span>) &#123;<br>                a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span> = a || [];<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span> = c != m ? c : <span class="hljs-number">4</span> * a.<span class="hljs-property">length</span><br>            &#125;, <span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">return</span> (a || h).<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>)<br>            &#125;, <span class="hljs-attr">concat</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">var</span> c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span>, q = a.<span class="hljs-property">words</span>, d = <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span>;<br>                a = a.<span class="hljs-property">sigBytes</span>;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">clamp</span>();<br>                <span class="hljs-keyword">if</span> (d % <span class="hljs-number">4</span>) <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>; b &lt; a; b++) c[d + b &gt;&gt;&gt; <span class="hljs-number">2</span>] |= (q[b &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (b % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * ((d + b) % <span class="hljs-number">4</span>); <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-number">65535</span> &lt; q.<span class="hljs-property">length</span>) <span class="hljs-keyword">for</span> (b = <span class="hljs-number">0</span>; b &lt; a; b += <span class="hljs-number">4</span>) c[d + b &gt;&gt;&gt; <span class="hljs-number">2</span>] = q[b &gt;&gt;&gt; <span class="hljs-number">2</span>]; <span class="hljs-keyword">else</span> c.<span class="hljs-property">push</span>.<span class="hljs-title function_">apply</span>(c, q);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span> += a;<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span><br>            &#125;, <span class="hljs-attr">clamp</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span>, c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span>;<br>                a[c &gt;&gt;&gt; <span class="hljs-number">2</span>] &amp;= <span class="hljs-number">4294967295</span> &lt;&lt;<br>                    <span class="hljs-number">32</span> - <span class="hljs-number">8</span> * (c % <span class="hljs-number">4</span>);<br>                a.<span class="hljs-property">length</span> = e.<span class="hljs-title function_">ceil</span>(c / <span class="hljs-number">4</span>)<br>            &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> a = f.<span class="hljs-property">clone</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>                a.<span class="hljs-property">words</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>);<br>                <span class="hljs-keyword">return</span> a<br>            &#125;, <span class="hljs-attr">random</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> c = [], b = <span class="hljs-number">0</span>; b &lt; a; b += <span class="hljs-number">4</span>) c.<span class="hljs-title function_">push</span>(<span class="hljs-number">4294967296</span> * e.<span class="hljs-title function_">random</span>() | <span class="hljs-number">0</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> n.<span class="hljs-title function_">init</span>(c, a)<br>            &#125;<br>        &#125;), b = p.<span class="hljs-property">enc</span> = &#123;&#125;, h = b.<span class="hljs-property">Hex</span> = &#123;<br>            <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">var</span> c = a.<span class="hljs-property">words</span>;<br>                a = a.<span class="hljs-property">sigBytes</span>;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = [], d = <span class="hljs-number">0</span>; d &lt; a; d++) &#123;<br>                    <span class="hljs-keyword">var</span> f = c[d &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (d % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>;<br>                    b.<span class="hljs-title function_">push</span>((f &gt;&gt;&gt; <span class="hljs-number">4</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>));<br>                    b.<span class="hljs-title function_">push</span>((f &amp; <span class="hljs-number">15</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>))<br>                &#125;<br>                <span class="hljs-keyword">return</span> b.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>)<br>            &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> c = a.<span class="hljs-property">length</span>, b = [], d = <span class="hljs-number">0</span>; d &lt; c; d += <span class="hljs-number">2</span>) b[d &gt;&gt;&gt; <span class="hljs-number">3</span>] |= <span class="hljs-built_in">parseInt</span>(a.<span class="hljs-title function_">substr</span>(d,<br>                    <span class="hljs-number">2</span>), <span class="hljs-number">16</span>) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">4</span> * (d % <span class="hljs-number">8</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> n.<span class="hljs-title function_">init</span>(b, c / <span class="hljs-number">2</span>)<br>            &#125;<br>        &#125;, g = b.<span class="hljs-property">Latin1</span> = &#123;<br>            <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">var</span> c = a.<span class="hljs-property">words</span>;<br>                a = a.<span class="hljs-property">sigBytes</span>;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = [], d = <span class="hljs-number">0</span>; d &lt; a; d++) b.<span class="hljs-title function_">push</span>(<span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(c[d &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (d % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>));<br>                <span class="hljs-keyword">return</span> b.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>)<br>            &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> c = a.<span class="hljs-property">length</span>, b = [], d = <span class="hljs-number">0</span>; d &lt; c; d++) b[d &gt;&gt;&gt; <span class="hljs-number">2</span>] |= (a.<span class="hljs-title function_">charCodeAt</span>(d) &amp; <span class="hljs-number">255</span>) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (d % <span class="hljs-number">4</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> n.<span class="hljs-title function_">init</span>(b, c)<br>            &#125;<br>        &#125;, r = b.<span class="hljs-property">Utf8</span> = &#123;<br>            <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-built_in">escape</span>(g.<span class="hljs-title function_">stringify</span>(a)))<br>                &#125; <span class="hljs-keyword">catch</span> (c) &#123;<br>                    <span class="hljs-keyword">throw</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Malformed UTF-8 data&quot;</span>);<br>                &#125;<br>            &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">return</span> g.<span class="hljs-title function_">parse</span>(<span class="hljs-built_in">unescape</span>(<span class="hljs-built_in">encodeURIComponent</span>(a)))<br>            &#125;<br>        &#125;,<br>        k = j.<span class="hljs-property">BufferedBlockAlgorithm</span> = f.<span class="hljs-title function_">extend</span>(&#123;<br>            <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span> = <span class="hljs-keyword">new</span> n.<span class="hljs-property">init</span>;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nDataBytes</span> = <span class="hljs-number">0</span><br>            &#125;, <span class="hljs-attr">_append</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-string">&quot;string&quot;</span> == <span class="hljs-keyword">typeof</span> a &amp;&amp; (a = r.<span class="hljs-title function_">parse</span>(a));<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>.<span class="hljs-title function_">concat</span>(a);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nDataBytes</span> += a.<span class="hljs-property">sigBytes</span><br>            &#125;, <span class="hljs-attr">_process</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">var</span> c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>, b = c.<span class="hljs-property">words</span>, d = c.<span class="hljs-property">sigBytes</span>, f = <span class="hljs-variable language_">this</span>.<span class="hljs-property">blockSize</span>, h = d / (<span class="hljs-number">4</span> * f),<br>                    h = a ? e.<span class="hljs-title function_">ceil</span>(h) : e.<span class="hljs-title function_">max</span>((h | <span class="hljs-number">0</span>) - <span class="hljs-variable language_">this</span>.<span class="hljs-property">_minBufferSize</span>, <span class="hljs-number">0</span>);<br>                a = h * f;<br>                d = e.<span class="hljs-title function_">min</span>(<span class="hljs-number">4</span> * a, d);<br>                <span class="hljs-keyword">if</span> (a) &#123;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> g = <span class="hljs-number">0</span>; g &lt; a; g += f) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doProcessBlock</span>(b, g);<br>                    g = b.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, a);<br>                    c.<span class="hljs-property">sigBytes</span> -= d<br>                &#125;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> n.<span class="hljs-title function_">init</span>(g, d)<br>            &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> a = f.<span class="hljs-property">clone</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>                a.<span class="hljs-property">_data</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>.<span class="hljs-title function_">clone</span>();<br>                <span class="hljs-keyword">return</span> a<br>            &#125;, <span class="hljs-attr">_minBufferSize</span>: <span class="hljs-number">0</span><br>        &#125;);<br>    j.<span class="hljs-property">Hasher</span> = k.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: f.<span class="hljs-title function_">extend</span>(), <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(a);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reset</span>()<br>        &#125;, <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            k.<span class="hljs-property">reset</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doReset</span>()<br>        &#125;, <span class="hljs-attr">update</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_append</span>(a);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>();<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span><br>        &#125;, <span class="hljs-attr">finalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            a &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_append</span>(a);<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doFinalize</span>()<br>        &#125;, <span class="hljs-attr">blockSize</span>: <span class="hljs-number">16</span>, <span class="hljs-attr">_createHelper</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">c, b</span>) &#123;<br>                <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> a.<span class="hljs-title function_">init</span>(b)).<span class="hljs-title function_">finalize</span>(c)<br>            &#125;<br>        &#125;, <span class="hljs-attr">_createHmacHelper</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">b, f</span>) &#123;<br>                <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> s.<span class="hljs-property">HMAC</span>.<span class="hljs-title function_">init</span>(a,<br>                    f)).<span class="hljs-title function_">finalize</span>(b)<br>            &#125;<br>        &#125;<br>    &#125;);<br>    <span class="hljs-keyword">var</span> s = p.<span class="hljs-property">algo</span> = &#123;&#125;;<br>    <span class="hljs-keyword">return</span> p<br>&#125;(<span class="hljs-title class_">Math</span>);<br>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> e = <span class="hljs-title class_">CryptoJS</span>, m = e.<span class="hljs-property">lib</span>, p = m.<span class="hljs-property">WordArray</span>, j = m.<span class="hljs-property">Hasher</span>, l = [], m = e.<span class="hljs-property">algo</span>.<span class="hljs-property">SHA1</span> = j.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">_doReset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span> = <span class="hljs-keyword">new</span> p.<span class="hljs-title function_">init</span>([<span class="hljs-number">1732584193</span>, <span class="hljs-number">4023233417</span>, <span class="hljs-number">2562383102</span>, <span class="hljs-number">271733878</span>, <span class="hljs-number">3285377520</span>])<br>        &#125;, <span class="hljs-attr">_doProcessBlock</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">f, n</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span>.<span class="hljs-property">words</span>, h = b[<span class="hljs-number">0</span>], g = b[<span class="hljs-number">1</span>], e = b[<span class="hljs-number">2</span>], k = b[<span class="hljs-number">3</span>], j = b[<span class="hljs-number">4</span>], a = <span class="hljs-number">0</span>; <span class="hljs-number">80</span> &gt; a; a++) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-number">16</span> &gt; a) l[a] = f[n + a] | <span class="hljs-number">0</span>; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-keyword">var</span> c = l[a - <span class="hljs-number">3</span>] ^ l[a - <span class="hljs-number">8</span>] ^ l[a - <span class="hljs-number">14</span>] ^ l[a - <span class="hljs-number">16</span>];<br>                    l[a] = c &lt;&lt; <span class="hljs-number">1</span> | c &gt;&gt;&gt; <span class="hljs-number">31</span><br>                &#125;<br>                c = (h &lt;&lt; <span class="hljs-number">5</span> | h &gt;&gt;&gt; <span class="hljs-number">27</span>) + j + l[a];<br>                c = <span class="hljs-number">20</span> &gt; a ? c + ((g &amp; e | ~g &amp; k) + <span class="hljs-number">1518500249</span>) : <span class="hljs-number">40</span> &gt; a ? c + ((g ^ e ^ k) + <span class="hljs-number">1859775393</span>) : <span class="hljs-number">60</span> &gt; a ? c + ((g &amp; e | g &amp; k | e &amp; k) - <span class="hljs-number">1894007588</span>) : c + ((g ^ e ^<br>                    k) - <span class="hljs-number">899497514</span>);<br>                j = k;<br>                k = e;<br>                e = g &lt;&lt; <span class="hljs-number">30</span> | g &gt;&gt;&gt; <span class="hljs-number">2</span>;<br>                g = h;<br>                h = c<br>            &#125;<br>            b[<span class="hljs-number">0</span>] = b[<span class="hljs-number">0</span>] + h | <span class="hljs-number">0</span>;<br>            b[<span class="hljs-number">1</span>] = b[<span class="hljs-number">1</span>] + g | <span class="hljs-number">0</span>;<br>            b[<span class="hljs-number">2</span>] = b[<span class="hljs-number">2</span>] + e | <span class="hljs-number">0</span>;<br>            b[<span class="hljs-number">3</span>] = b[<span class="hljs-number">3</span>] + k | <span class="hljs-number">0</span>;<br>            b[<span class="hljs-number">4</span>] = b[<span class="hljs-number">4</span>] + j | <span class="hljs-number">0</span><br>        &#125;, <span class="hljs-attr">_doFinalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> f = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>, e = f.<span class="hljs-property">words</span>, b = <span class="hljs-number">8</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nDataBytes</span>, h = <span class="hljs-number">8</span> * f.<span class="hljs-property">sigBytes</span>;<br>            e[h &gt;&gt;&gt; <span class="hljs-number">5</span>] |= <span class="hljs-number">128</span> &lt;&lt; <span class="hljs-number">24</span> - h % <span class="hljs-number">32</span>;<br>            e[(h + <span class="hljs-number">64</span> &gt;&gt;&gt; <span class="hljs-number">9</span> &lt;&lt; <span class="hljs-number">4</span>) + <span class="hljs-number">14</span>] = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(b / <span class="hljs-number">4294967296</span>);<br>            e[(h + <span class="hljs-number">64</span> &gt;&gt;&gt; <span class="hljs-number">9</span> &lt;&lt; <span class="hljs-number">4</span>) + <span class="hljs-number">15</span>] = b;<br>            f.<span class="hljs-property">sigBytes</span> = <span class="hljs-number">4</span> * e.<span class="hljs-property">length</span>;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>();<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span><br>        &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> e = j.<span class="hljs-property">clone</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>            e.<span class="hljs-property">_hash</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span>.<span class="hljs-title function_">clone</span>();<br>            <span class="hljs-keyword">return</span> e<br>        &#125;<br>    &#125;);<br>    e.<span class="hljs-property">SHA1</span> = j.<span class="hljs-title function_">_createHelper</span>(m);<br>    e.<span class="hljs-property">HmacSHA1</span> = j.<span class="hljs-title function_">_createHmacHelper</span>(m)<br>&#125;)();<br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/JavaScript/%E5%8A%A0%E5%AF%86%E6%BA%90%E7%A0%81/" class="category-chain-item">加密源码</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%A0%E5%AF%86%E6%BA%90%E7%A0%81/">#加密源码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Sha1</div>
+      <div>https://sign226.github.io/posts/9300bf14/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SignCc</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/7d0ede38/" title="Sha3">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Sha3</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/ff1def1d/" title="Rc4">
+                        <span class="hidden-mobile">Rc4</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","appKey":"VF6l5XVkCCe4IDy6xqkhusUe","path":"window.location.pathname","placeholder":"说点什么吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

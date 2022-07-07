@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SignCc">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Rc4加密源码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rc4">
+<meta property="og:url" content="https://sign226.github.io/posts/ff1def1d/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Rc4加密源码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-07T02:15:23.000Z">
+<meta property="article:modified_time" content="2022-07-07T02:22:04.615Z">
+<meta property="article:author" content="SignCc">
+<meta property="article:tag" content="加密源码">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Rc4 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sign226.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","app_key":"VF6l5XVkCCe4IDy6xqkhusUe","server_url":"https://0yd4gwf8.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>今有大鱼名为咸</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Rc4"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-07 10:15" pubdate>
+          2022年7月7日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          130 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Rc4</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Rc4加密源码"><a href="#Rc4加密源码" class="headerlink" title="Rc4加密源码"></a>Rc4加密源码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/*</span><br><span class="hljs-comment">CryptoJS v3.1.2</span><br><span class="hljs-comment">code.google.com/p/crypto-js</span><br><span class="hljs-comment">(c) 2009-2013 by Jeff Mott. All rights reserved.</span><br><span class="hljs-comment">code.google.com/p/crypto-js/wiki/License</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">var</span> <span class="hljs-title class_">CryptoJS</span> = <span class="hljs-title class_">CryptoJS</span> || <span class="hljs-keyword">function</span> (<span class="hljs-params">s, l</span>) &#123;<br>    <span class="hljs-keyword">var</span> e = &#123;&#125;, n = e.<span class="hljs-property">lib</span> = &#123;&#125;, p = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        &#125;, b = n.<span class="hljs-property">Base</span> = &#123;<br>            <span class="hljs-attr">extend</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                p.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-variable language_">this</span>;<br>                <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> p;<br>                c &amp;&amp; a.<span class="hljs-title function_">mixIn</span>(c);<br>                a.<span class="hljs-title function_">hasOwnProperty</span>(<span class="hljs-string">&quot;init&quot;</span>) || (a.<span class="hljs-property">init</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                    a.<span class="hljs-property">$super</span>.<span class="hljs-property">init</span>.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>)<br>                &#125;);<br>                a.<span class="hljs-property">init</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = a;<br>                a.<span class="hljs-property">$super</span> = <span class="hljs-variable language_">this</span>;<br>                <span class="hljs-keyword">return</span> a<br>            &#125;, <span class="hljs-attr">create</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> c = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">extend</span>();<br>                c.<span class="hljs-property">init</span>.<span class="hljs-title function_">apply</span>(c, <span class="hljs-variable language_">arguments</span>);<br>                <span class="hljs-keyword">return</span> c<br>            &#125;, <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            &#125;, <span class="hljs-attr">mixIn</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> a <span class="hljs-keyword">in</span> c) c.<span class="hljs-title function_">hasOwnProperty</span>(a) &amp;&amp; (<span class="hljs-variable language_">this</span>[a] = c[a]);<br>                c.<span class="hljs-title function_">hasOwnProperty</span>(<span class="hljs-string">&quot;toString&quot;</span>) &amp;&amp; (<span class="hljs-variable language_">this</span>.<span class="hljs-property">toString</span> = c.<span class="hljs-property">toString</span>)<br>            &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">init</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">extend</span>(<span class="hljs-variable language_">this</span>)<br>            &#125;<br>        &#125;,<br>        d = n.<span class="hljs-property">WordArray</span> = b.<span class="hljs-title function_">extend</span>(&#123;<br>            <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c, a</span>) &#123;<br>                c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span> = c || [];<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span> = a != l ? a : <span class="hljs-number">4</span> * c.<span class="hljs-property">length</span><br>            &#125;, <span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">return</span> (c || q).<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>)<br>            &#125;, <span class="hljs-attr">concat</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">var</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span>, m = c.<span class="hljs-property">words</span>, f = <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span>;<br>                c = c.<span class="hljs-property">sigBytes</span>;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">clamp</span>();<br>                <span class="hljs-keyword">if</span> (f % <span class="hljs-number">4</span>) <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> r = <span class="hljs-number">0</span>; r &lt; c; r++) a[f + r &gt;&gt;&gt; <span class="hljs-number">2</span>] |= (m[r &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (r % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * ((f + r) % <span class="hljs-number">4</span>); <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-number">65535</span> &lt; m.<span class="hljs-property">length</span>) <span class="hljs-keyword">for</span> (r = <span class="hljs-number">0</span>; r &lt; c; r += <span class="hljs-number">4</span>) a[f + r &gt;&gt;&gt; <span class="hljs-number">2</span>] = m[r &gt;&gt;&gt; <span class="hljs-number">2</span>]; <span class="hljs-keyword">else</span> a.<span class="hljs-property">push</span>.<span class="hljs-title function_">apply</span>(a, m);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span> += c;<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span><br>            &#125;, <span class="hljs-attr">clamp</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span>, a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">sigBytes</span>;<br>                c[a &gt;&gt;&gt; <span class="hljs-number">2</span>] &amp;= <span class="hljs-number">4294967295</span> &lt;&lt;<br>                    <span class="hljs-number">32</span> - <span class="hljs-number">8</span> * (a % <span class="hljs-number">4</span>);<br>                c.<span class="hljs-property">length</span> = s.<span class="hljs-title function_">ceil</span>(a / <span class="hljs-number">4</span>)<br>            &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> c = b.<span class="hljs-property">clone</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>                c.<span class="hljs-property">words</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">words</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>);<br>                <span class="hljs-keyword">return</span> c<br>            &#125;, <span class="hljs-attr">random</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> a = [], m = <span class="hljs-number">0</span>; m &lt; c; m += <span class="hljs-number">4</span>) a.<span class="hljs-title function_">push</span>(<span class="hljs-number">4294967296</span> * s.<span class="hljs-title function_">random</span>() | <span class="hljs-number">0</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> d.<span class="hljs-title function_">init</span>(a, c)<br>            &#125;<br>        &#125;), t = e.<span class="hljs-property">enc</span> = &#123;&#125;, q = t.<span class="hljs-property">Hex</span> = &#123;<br>            <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">var</span> a = c.<span class="hljs-property">words</span>;<br>                c = c.<span class="hljs-property">sigBytes</span>;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> m = [], f = <span class="hljs-number">0</span>; f &lt; c; f++) &#123;<br>                    <span class="hljs-keyword">var</span> r = a[f &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (f % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>;<br>                    m.<span class="hljs-title function_">push</span>((r &gt;&gt;&gt; <span class="hljs-number">4</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>));<br>                    m.<span class="hljs-title function_">push</span>((r &amp; <span class="hljs-number">15</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>))<br>                &#125;<br>                <span class="hljs-keyword">return</span> m.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>)<br>            &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> a = c.<span class="hljs-property">length</span>, m = [], f = <span class="hljs-number">0</span>; f &lt; a; f += <span class="hljs-number">2</span>) m[f &gt;&gt;&gt; <span class="hljs-number">3</span>] |= <span class="hljs-built_in">parseInt</span>(c.<span class="hljs-title function_">substr</span>(f,<br>                    <span class="hljs-number">2</span>), <span class="hljs-number">16</span>) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">4</span> * (f % <span class="hljs-number">8</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> d.<span class="hljs-title function_">init</span>(m, a / <span class="hljs-number">2</span>)<br>            &#125;<br>        &#125;, a = t.<span class="hljs-property">Latin1</span> = &#123;<br>            <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">var</span> a = c.<span class="hljs-property">words</span>;<br>                c = c.<span class="hljs-property">sigBytes</span>;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> m = [], f = <span class="hljs-number">0</span>; f &lt; c; f++) m.<span class="hljs-title function_">push</span>(<span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(a[f &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (f % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>));<br>                <span class="hljs-keyword">return</span> m.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>)<br>            &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> a = c.<span class="hljs-property">length</span>, m = [], f = <span class="hljs-number">0</span>; f &lt; a; f++) m[f &gt;&gt;&gt; <span class="hljs-number">2</span>] |= (c.<span class="hljs-title function_">charCodeAt</span>(f) &amp; <span class="hljs-number">255</span>) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (f % <span class="hljs-number">4</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> d.<span class="hljs-title function_">init</span>(m, a)<br>            &#125;<br>        &#125;, v = t.<span class="hljs-property">Utf8</span> = &#123;<br>            <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-built_in">escape</span>(a.<span class="hljs-title function_">stringify</span>(c)))<br>                &#125; <span class="hljs-keyword">catch</span> (u) &#123;<br>                    <span class="hljs-keyword">throw</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Malformed UTF-8 data&quot;</span>);<br>                &#125;<br>            &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) &#123;<br>                <span class="hljs-keyword">return</span> a.<span class="hljs-title function_">parse</span>(<span class="hljs-built_in">unescape</span>(<span class="hljs-built_in">encodeURIComponent</span>(c)))<br>            &#125;<br>        &#125;,<br>        u = n.<span class="hljs-property">BufferedBlockAlgorithm</span> = b.<span class="hljs-title function_">extend</span>(&#123;<br>            <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span> = <span class="hljs-keyword">new</span> d.<span class="hljs-property">init</span>;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nDataBytes</span> = <span class="hljs-number">0</span><br>            &#125;, <span class="hljs-attr">_append</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-string">&quot;string&quot;</span> == <span class="hljs-keyword">typeof</span> a &amp;&amp; (a = v.<span class="hljs-title function_">parse</span>(a));<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>.<span class="hljs-title function_">concat</span>(a);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nDataBytes</span> += a.<span class="hljs-property">sigBytes</span><br>            &#125;, <span class="hljs-attr">_process</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">var</span> u = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>, m = u.<span class="hljs-property">words</span>, f = u.<span class="hljs-property">sigBytes</span>, r = <span class="hljs-variable language_">this</span>.<span class="hljs-property">blockSize</span>, e = f / (<span class="hljs-number">4</span> * r),<br>                    e = a ? s.<span class="hljs-title function_">ceil</span>(e) : s.<span class="hljs-title function_">max</span>((e | <span class="hljs-number">0</span>) - <span class="hljs-variable language_">this</span>.<span class="hljs-property">_minBufferSize</span>, <span class="hljs-number">0</span>);<br>                a = e * r;<br>                f = s.<span class="hljs-title function_">min</span>(<span class="hljs-number">4</span> * a, f);<br>                <span class="hljs-keyword">if</span> (a) &#123;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>; b &lt; a; b += r) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doProcessBlock</span>(m, b);<br>                    b = m.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, a);<br>                    u.<span class="hljs-property">sigBytes</span> -= f<br>                &#125;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> d.<span class="hljs-title function_">init</span>(b, f)<br>            &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> a = b.<span class="hljs-property">clone</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>                a.<span class="hljs-property">_data</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>.<span class="hljs-title function_">clone</span>();<br>                <span class="hljs-keyword">return</span> a<br>            &#125;, <span class="hljs-attr">_minBufferSize</span>: <span class="hljs-number">0</span><br>        &#125;);<br>    n.<span class="hljs-property">Hasher</span> = u.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: b.<span class="hljs-title function_">extend</span>(), <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(a);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reset</span>()<br>        &#125;, <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            u.<span class="hljs-property">reset</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doReset</span>()<br>        &#125;, <span class="hljs-attr">update</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_append</span>(a);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>();<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span><br>        &#125;, <span class="hljs-attr">finalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            a &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_append</span>(a);<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doFinalize</span>()<br>        &#125;, <span class="hljs-attr">blockSize</span>: <span class="hljs-number">16</span>, <span class="hljs-attr">_createHelper</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">u, m</span>) &#123;<br>                <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> a.<span class="hljs-title function_">init</span>(m)).<span class="hljs-title function_">finalize</span>(u)<br>            &#125;<br>        &#125;, <span class="hljs-attr">_createHmacHelper</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">u, m</span>) &#123;<br>                <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> w.<span class="hljs-property">HMAC</span>.<span class="hljs-title function_">init</span>(a,<br>                    m)).<span class="hljs-title function_">finalize</span>(u)<br>            &#125;<br>        &#125;<br>    &#125;);<br>    <span class="hljs-keyword">var</span> w = e.<span class="hljs-property">algo</span> = &#123;&#125;;<br>    <span class="hljs-keyword">return</span> e<br>&#125;(<span class="hljs-title class_">Math</span>);<br>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> s = <span class="hljs-title class_">CryptoJS</span>, l = s.<span class="hljs-property">lib</span>.<span class="hljs-property">WordArray</span>;<br>    s.<span class="hljs-property">enc</span>.<span class="hljs-property">Base64</span> = &#123;<br>        <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>            <span class="hljs-keyword">var</span> n = e.<span class="hljs-property">words</span>, l = e.<span class="hljs-property">sigBytes</span>, b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_map</span>;<br>            e.<span class="hljs-title function_">clamp</span>();<br>            e = [];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> d = <span class="hljs-number">0</span>; d &lt; l; d += <span class="hljs-number">3</span>) <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> t = (n[d &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (d % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>) &lt;&lt; <span class="hljs-number">16</span> | (n[d + <span class="hljs-number">1</span> &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * ((d + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>) &lt;&lt; <span class="hljs-number">8</span> | n[d + <span class="hljs-number">2</span> &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * ((d + <span class="hljs-number">2</span>) % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>, q = <span class="hljs-number">0</span>; <span class="hljs-number">4</span> &gt; q &amp;&amp; d + <span class="hljs-number">0.75</span> * q &lt; l; q++) e.<span class="hljs-title function_">push</span>(b.<span class="hljs-title function_">charAt</span>(t &gt;&gt;&gt; <span class="hljs-number">6</span> * (<span class="hljs-number">3</span> - q) &amp; <span class="hljs-number">63</span>));<br>            <span class="hljs-keyword">if</span> (n = b.<span class="hljs-title function_">charAt</span>(<span class="hljs-number">64</span>)) <span class="hljs-keyword">for</span> (; e.<span class="hljs-property">length</span> % <span class="hljs-number">4</span>;) e.<span class="hljs-title function_">push</span>(n);<br>            <span class="hljs-keyword">return</span> e.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>)<br>        &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>            <span class="hljs-keyword">var</span> n = e.<span class="hljs-property">length</span>, p = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_map</span>, b = p.<span class="hljs-title function_">charAt</span>(<span class="hljs-number">64</span>);<br>            b &amp;&amp; (b = e.<span class="hljs-title function_">indexOf</span>(b), -<span class="hljs-number">1</span> != b &amp;&amp; (n = b));<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = [], d = <span class="hljs-number">0</span>, t = <span class="hljs-number">0</span>; t &lt;<br>            n; t++) <span class="hljs-keyword">if</span> (t % <span class="hljs-number">4</span>) &#123;<br>                <span class="hljs-keyword">var</span> q = p.<span class="hljs-title function_">indexOf</span>(e.<span class="hljs-title function_">charAt</span>(t - <span class="hljs-number">1</span>)) &lt;&lt; <span class="hljs-number">2</span> * (t % <span class="hljs-number">4</span>), a = p.<span class="hljs-title function_">indexOf</span>(e.<span class="hljs-title function_">charAt</span>(t)) &gt;&gt;&gt; <span class="hljs-number">6</span> - <span class="hljs-number">2</span> * (t % <span class="hljs-number">4</span>);<br>                b[d &gt;&gt;&gt; <span class="hljs-number">2</span>] |= (q | a) &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (d % <span class="hljs-number">4</span>);<br>                d++<br>            &#125;<br>            <span class="hljs-keyword">return</span> l.<span class="hljs-title function_">create</span>(b, d)<br>        &#125;, <span class="hljs-attr">_map</span>: <span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&quot;</span><br>    &#125;<br>&#125;)();<br>(<span class="hljs-keyword">function</span> (<span class="hljs-params">s</span>) &#123;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">l</span>(<span class="hljs-params">a, b, c, e, m, f, r</span>) &#123;<br>        a = a + (b &amp; c | ~b &amp; e) + m + r;<br>        <span class="hljs-keyword">return</span> (a &lt;&lt; f | a &gt;&gt;&gt; <span class="hljs-number">32</span> - f) + b<br>    &#125;<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">e</span>(<span class="hljs-params">a, b, c, e, m, f, r</span>) &#123;<br>        a = a + (b &amp; e | c &amp; ~e) + m + r;<br>        <span class="hljs-keyword">return</span> (a &lt;&lt; f | a &gt;&gt;&gt; <span class="hljs-number">32</span> - f) + b<br>    &#125;<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">n</span>(<span class="hljs-params">a, b, c, e, m, f, r</span>) &#123;<br>        a = a + (b ^ c ^ e) + m + r;<br>        <span class="hljs-keyword">return</span> (a &lt;&lt; f | a &gt;&gt;&gt; <span class="hljs-number">32</span> - f) + b<br>    &#125;<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">p</span>(<span class="hljs-params">a, b, c, e, m, f, r</span>) &#123;<br>        a = a + (c ^ (b | ~e)) + m + r;<br>        <span class="hljs-keyword">return</span> (a &lt;&lt; f | a &gt;&gt;&gt; <span class="hljs-number">32</span> - f) + b<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-title class_">CryptoJS</span>, d = b.<span class="hljs-property">lib</span>, t = d.<span class="hljs-property">WordArray</span>, q = d.<span class="hljs-property">Hasher</span>, d = b.<span class="hljs-property">algo</span>, a = [], v = <span class="hljs-number">0</span>; <span class="hljs-number">64</span> &gt; v; v++) a[v] = <span class="hljs-number">4294967296</span> * s.<span class="hljs-title function_">abs</span>(s.<span class="hljs-title function_">sin</span>(v + <span class="hljs-number">1</span>)) | <span class="hljs-number">0</span>;<br>    d = d.<span class="hljs-property">MD5</span> = q.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">_doReset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span> = <span class="hljs-keyword">new</span> t.<span class="hljs-title function_">init</span>([<span class="hljs-number">1732584193</span>, <span class="hljs-number">4023233417</span>, <span class="hljs-number">2562383102</span>, <span class="hljs-number">271733878</span>])<br>        &#125;,<br>        <span class="hljs-attr">_doProcessBlock</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">b, d</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> c = <span class="hljs-number">0</span>; <span class="hljs-number">16</span> &gt; c; c++) &#123;<br>                <span class="hljs-keyword">var</span> q = d + c, m = b[q];<br>                b[q] = (m &lt;&lt; <span class="hljs-number">8</span> | m &gt;&gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">16711935</span> | (m &lt;&lt; <span class="hljs-number">24</span> | m &gt;&gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">4278255360</span><br>            &#125;<br>            <span class="hljs-keyword">var</span> c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span>.<span class="hljs-property">words</span>, q = b[d + <span class="hljs-number">0</span>], m = b[d + <span class="hljs-number">1</span>], f = b[d + <span class="hljs-number">2</span>], r = b[d + <span class="hljs-number">3</span>], x = b[d + <span class="hljs-number">4</span>],<br>                t = b[d + <span class="hljs-number">5</span>], s = b[d + <span class="hljs-number">6</span>], v = b[d + <span class="hljs-number">7</span>], y = b[d + <span class="hljs-number">8</span>], z = b[d + <span class="hljs-number">9</span>], A = b[d + <span class="hljs-number">10</span>], B = b[d + <span class="hljs-number">11</span>],<br>                C = b[d + <span class="hljs-number">12</span>], D = b[d + <span class="hljs-number">13</span>], E = b[d + <span class="hljs-number">14</span>], F = b[d + <span class="hljs-number">15</span>], g = c[<span class="hljs-number">0</span>], h = c[<span class="hljs-number">1</span>], j = c[<span class="hljs-number">2</span>], k = c[<span class="hljs-number">3</span>],<br>                g = <span class="hljs-title function_">l</span>(g, h, j, k, q, <span class="hljs-number">7</span>, a[<span class="hljs-number">0</span>]), k = <span class="hljs-title function_">l</span>(k, g, h, j, m, <span class="hljs-number">12</span>, a[<span class="hljs-number">1</span>]), j = <span class="hljs-title function_">l</span>(j, k, g, h, f, <span class="hljs-number">17</span>, a[<span class="hljs-number">2</span>]),<br>                h = <span class="hljs-title function_">l</span>(h, j, k, g, r, <span class="hljs-number">22</span>, a[<span class="hljs-number">3</span>]), g = <span class="hljs-title function_">l</span>(g, h, j, k, x, <span class="hljs-number">7</span>, a[<span class="hljs-number">4</span>]), k = <span class="hljs-title function_">l</span>(k, g, h, j, t, <span class="hljs-number">12</span>, a[<span class="hljs-number">5</span>]),<br>                j = <span class="hljs-title function_">l</span>(j, k, g, h, s, <span class="hljs-number">17</span>, a[<span class="hljs-number">6</span>]), h = <span class="hljs-title function_">l</span>(h, j, k, g, v, <span class="hljs-number">22</span>, a[<span class="hljs-number">7</span>]),<br>                g = <span class="hljs-title function_">l</span>(g, h, j, k, y, <span class="hljs-number">7</span>, a[<span class="hljs-number">8</span>]), k = <span class="hljs-title function_">l</span>(k, g, h, j, z, <span class="hljs-number">12</span>, a[<span class="hljs-number">9</span>]), j = <span class="hljs-title function_">l</span>(j, k, g, h, A, <span class="hljs-number">17</span>, a[<span class="hljs-number">10</span>]),<br>                h = <span class="hljs-title function_">l</span>(h, j, k, g, B, <span class="hljs-number">22</span>, a[<span class="hljs-number">11</span>]), g = <span class="hljs-title function_">l</span>(g, h, j, k, C, <span class="hljs-number">7</span>, a[<span class="hljs-number">12</span>]), k = <span class="hljs-title function_">l</span>(k, g, h, j, D, <span class="hljs-number">12</span>, a[<span class="hljs-number">13</span>]),<br>                j = <span class="hljs-title function_">l</span>(j, k, g, h, E, <span class="hljs-number">17</span>, a[<span class="hljs-number">14</span>]), h = <span class="hljs-title function_">l</span>(h, j, k, g, F, <span class="hljs-number">22</span>, a[<span class="hljs-number">15</span>]), g = <span class="hljs-title function_">e</span>(g, h, j, k, m, <span class="hljs-number">5</span>, a[<span class="hljs-number">16</span>]),<br>                k = <span class="hljs-title function_">e</span>(k, g, h, j, s, <span class="hljs-number">9</span>, a[<span class="hljs-number">17</span>]), j = <span class="hljs-title function_">e</span>(j, k, g, h, B, <span class="hljs-number">14</span>, a[<span class="hljs-number">18</span>]), h = <span class="hljs-title function_">e</span>(h, j, k, g, q, <span class="hljs-number">20</span>, a[<span class="hljs-number">19</span>]),<br>                g = <span class="hljs-title function_">e</span>(g, h, j, k, t, <span class="hljs-number">5</span>, a[<span class="hljs-number">20</span>]), k = <span class="hljs-title function_">e</span>(k, g, h, j, A, <span class="hljs-number">9</span>, a[<span class="hljs-number">21</span>]), j = <span class="hljs-title function_">e</span>(j, k, g, h, F, <span class="hljs-number">14</span>, a[<span class="hljs-number">22</span>]),<br>                h = <span class="hljs-title function_">e</span>(h, j, k, g, x, <span class="hljs-number">20</span>, a[<span class="hljs-number">23</span>]), g = <span class="hljs-title function_">e</span>(g, h, j, k, z, <span class="hljs-number">5</span>, a[<span class="hljs-number">24</span>]), k = <span class="hljs-title function_">e</span>(k, g, h, j, E, <span class="hljs-number">9</span>, a[<span class="hljs-number">25</span>]),<br>                j = <span class="hljs-title function_">e</span>(j, k, g, h, r, <span class="hljs-number">14</span>, a[<span class="hljs-number">26</span>]), h = <span class="hljs-title function_">e</span>(h, j, k, g, y, <span class="hljs-number">20</span>, a[<span class="hljs-number">27</span>]), g = <span class="hljs-title function_">e</span>(g, h, j, k, D, <span class="hljs-number">5</span>, a[<span class="hljs-number">28</span>]),<br>                k = <span class="hljs-title function_">e</span>(k, g,<br>                    h, j, f, <span class="hljs-number">9</span>, a[<span class="hljs-number">29</span>]), j = <span class="hljs-title function_">e</span>(j, k, g, h, v, <span class="hljs-number">14</span>, a[<span class="hljs-number">30</span>]), h = <span class="hljs-title function_">e</span>(h, j, k, g, C, <span class="hljs-number">20</span>, a[<span class="hljs-number">31</span>]),<br>                g = <span class="hljs-title function_">n</span>(g, h, j, k, t, <span class="hljs-number">4</span>, a[<span class="hljs-number">32</span>]), k = <span class="hljs-title function_">n</span>(k, g, h, j, y, <span class="hljs-number">11</span>, a[<span class="hljs-number">33</span>]), j = <span class="hljs-title function_">n</span>(j, k, g, h, B, <span class="hljs-number">16</span>, a[<span class="hljs-number">34</span>]),<br>                h = <span class="hljs-title function_">n</span>(h, j, k, g, E, <span class="hljs-number">23</span>, a[<span class="hljs-number">35</span>]), g = <span class="hljs-title function_">n</span>(g, h, j, k, m, <span class="hljs-number">4</span>, a[<span class="hljs-number">36</span>]), k = <span class="hljs-title function_">n</span>(k, g, h, j, x, <span class="hljs-number">11</span>, a[<span class="hljs-number">37</span>]),<br>                j = <span class="hljs-title function_">n</span>(j, k, g, h, v, <span class="hljs-number">16</span>, a[<span class="hljs-number">38</span>]), h = <span class="hljs-title function_">n</span>(h, j, k, g, A, <span class="hljs-number">23</span>, a[<span class="hljs-number">39</span>]), g = <span class="hljs-title function_">n</span>(g, h, j, k, D, <span class="hljs-number">4</span>, a[<span class="hljs-number">40</span>]),<br>                k = <span class="hljs-title function_">n</span>(k, g, h, j, q, <span class="hljs-number">11</span>, a[<span class="hljs-number">41</span>]), j = <span class="hljs-title function_">n</span>(j, k, g, h, r, <span class="hljs-number">16</span>, a[<span class="hljs-number">42</span>]), h = <span class="hljs-title function_">n</span>(h, j, k, g, s, <span class="hljs-number">23</span>, a[<span class="hljs-number">43</span>]),<br>                g = <span class="hljs-title function_">n</span>(g, h, j, k, z, <span class="hljs-number">4</span>, a[<span class="hljs-number">44</span>]), k = <span class="hljs-title function_">n</span>(k, g, h, j, C, <span class="hljs-number">11</span>, a[<span class="hljs-number">45</span>]), j = <span class="hljs-title function_">n</span>(j, k, g, h, F, <span class="hljs-number">16</span>, a[<span class="hljs-number">46</span>]),<br>                h = <span class="hljs-title function_">n</span>(h, j, k, g, f, <span class="hljs-number">23</span>, a[<span class="hljs-number">47</span>]), g = <span class="hljs-title function_">p</span>(g, h, j, k, q, <span class="hljs-number">6</span>, a[<span class="hljs-number">48</span>]), k = <span class="hljs-title function_">p</span>(k, g, h, j, v, <span class="hljs-number">10</span>, a[<span class="hljs-number">49</span>]),<br>                j = <span class="hljs-title function_">p</span>(j, k, g, h,<br>                    E, <span class="hljs-number">15</span>, a[<span class="hljs-number">50</span>]), h = <span class="hljs-title function_">p</span>(h, j, k, g, t, <span class="hljs-number">21</span>, a[<span class="hljs-number">51</span>]), g = <span class="hljs-title function_">p</span>(g, h, j, k, C, <span class="hljs-number">6</span>, a[<span class="hljs-number">52</span>]),<br>                k = <span class="hljs-title function_">p</span>(k, g, h, j, r, <span class="hljs-number">10</span>, a[<span class="hljs-number">53</span>]), j = <span class="hljs-title function_">p</span>(j, k, g, h, A, <span class="hljs-number">15</span>, a[<span class="hljs-number">54</span>]), h = <span class="hljs-title function_">p</span>(h, j, k, g, m, <span class="hljs-number">21</span>, a[<span class="hljs-number">55</span>]),<br>                g = <span class="hljs-title function_">p</span>(g, h, j, k, y, <span class="hljs-number">6</span>, a[<span class="hljs-number">56</span>]), k = <span class="hljs-title function_">p</span>(k, g, h, j, F, <span class="hljs-number">10</span>, a[<span class="hljs-number">57</span>]), j = <span class="hljs-title function_">p</span>(j, k, g, h, s, <span class="hljs-number">15</span>, a[<span class="hljs-number">58</span>]),<br>                h = <span class="hljs-title function_">p</span>(h, j, k, g, D, <span class="hljs-number">21</span>, a[<span class="hljs-number">59</span>]), g = <span class="hljs-title function_">p</span>(g, h, j, k, x, <span class="hljs-number">6</span>, a[<span class="hljs-number">60</span>]), k = <span class="hljs-title function_">p</span>(k, g, h, j, B, <span class="hljs-number">10</span>, a[<span class="hljs-number">61</span>]),<br>                j = <span class="hljs-title function_">p</span>(j, k, g, h, f, <span class="hljs-number">15</span>, a[<span class="hljs-number">62</span>]), h = <span class="hljs-title function_">p</span>(h, j, k, g, z, <span class="hljs-number">21</span>, a[<span class="hljs-number">63</span>]);<br>            c[<span class="hljs-number">0</span>] = c[<span class="hljs-number">0</span>] + g | <span class="hljs-number">0</span>;<br>            c[<span class="hljs-number">1</span>] = c[<span class="hljs-number">1</span>] + h | <span class="hljs-number">0</span>;<br>            c[<span class="hljs-number">2</span>] = c[<span class="hljs-number">2</span>] + j | <span class="hljs-number">0</span>;<br>            c[<span class="hljs-number">3</span>] = c[<span class="hljs-number">3</span>] + k | <span class="hljs-number">0</span><br>        &#125;, <span class="hljs-attr">_doFinalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>, b = a.<span class="hljs-property">words</span>, c = <span class="hljs-number">8</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nDataBytes</span>, d = <span class="hljs-number">8</span> * a.<span class="hljs-property">sigBytes</span>;<br>            b[d &gt;&gt;&gt; <span class="hljs-number">5</span>] |= <span class="hljs-number">128</span> &lt;&lt; <span class="hljs-number">24</span> - d % <span class="hljs-number">32</span>;<br>            <span class="hljs-keyword">var</span> m = s.<span class="hljs-title function_">floor</span>(c /<br>                <span class="hljs-number">4294967296</span>);<br>            b[(d + <span class="hljs-number">64</span> &gt;&gt;&gt; <span class="hljs-number">9</span> &lt;&lt; <span class="hljs-number">4</span>) + <span class="hljs-number">15</span>] = (m &lt;&lt; <span class="hljs-number">8</span> | m &gt;&gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">16711935</span> | (m &lt;&lt; <span class="hljs-number">24</span> | m &gt;&gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">4278255360</span>;<br>            b[(d + <span class="hljs-number">64</span> &gt;&gt;&gt; <span class="hljs-number">9</span> &lt;&lt; <span class="hljs-number">4</span>) + <span class="hljs-number">14</span>] = (c &lt;&lt; <span class="hljs-number">8</span> | c &gt;&gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">16711935</span> | (c &lt;&lt; <span class="hljs-number">24</span> | c &gt;&gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">4278255360</span>;<br>            a.<span class="hljs-property">sigBytes</span> = <span class="hljs-number">4</span> * (b.<span class="hljs-property">length</span> + <span class="hljs-number">1</span>);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>();<br>            a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span>;<br>            b = a.<span class="hljs-property">words</span>;<br>            <span class="hljs-keyword">for</span> (c = <span class="hljs-number">0</span>; <span class="hljs-number">4</span> &gt; c; c++) d = b[c], b[c] = (d &lt;&lt; <span class="hljs-number">8</span> | d &gt;&gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">16711935</span> | (d &lt;&lt; <span class="hljs-number">24</span> | d &gt;&gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">4278255360</span>;<br>            <span class="hljs-keyword">return</span> a<br>        &#125;, <span class="hljs-attr">clone</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> a = q.<span class="hljs-property">clone</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>            a.<span class="hljs-property">_hash</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_hash</span>.<span class="hljs-title function_">clone</span>();<br>            <span class="hljs-keyword">return</span> a<br>        &#125;<br>    &#125;);<br>    b.<span class="hljs-property">MD5</span> = q.<span class="hljs-title function_">_createHelper</span>(d);<br>    b.<span class="hljs-property">HmacMD5</span> = q.<span class="hljs-title function_">_createHmacHelper</span>(d)<br>&#125;)(<span class="hljs-title class_">Math</span>);<br>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> s = <span class="hljs-title class_">CryptoJS</span>, l = s.<span class="hljs-property">lib</span>, e = l.<span class="hljs-property">Base</span>, n = l.<span class="hljs-property">WordArray</span>, l = s.<span class="hljs-property">algo</span>, p = l.<span class="hljs-property">EvpKDF</span> = e.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: e.<span class="hljs-title function_">extend</span>(&#123;<span class="hljs-attr">keySize</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">hasher</span>: l.<span class="hljs-property">MD5</span>, <span class="hljs-attr">iterations</span>: <span class="hljs-number">1</span>&#125;), <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">b</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(b)<br>        &#125;, <span class="hljs-attr">compute</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">b, d</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> e = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>, q = e.<span class="hljs-property">hasher</span>.<span class="hljs-title function_">create</span>(), a = n.<span class="hljs-title function_">create</span>(), l = a.<span class="hljs-property">words</span>, p = e.<span class="hljs-property">keySize</span>, e = e.<span class="hljs-property">iterations</span>; l.<span class="hljs-property">length</span> &lt; p;) &#123;<br>                s &amp;&amp; q.<span class="hljs-title function_">update</span>(s);<br>                <span class="hljs-keyword">var</span> s = q.<span class="hljs-title function_">update</span>(b).<span class="hljs-title function_">finalize</span>(d);<br>                q.<span class="hljs-title function_">reset</span>();<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> c = <span class="hljs-number">1</span>; c &lt; e; c++) s = q.<span class="hljs-title function_">finalize</span>(s), q.<span class="hljs-title function_">reset</span>();<br>                a.<span class="hljs-title function_">concat</span>(s)<br>            &#125;<br>            a.<span class="hljs-property">sigBytes</span> = <span class="hljs-number">4</span> * p;<br>            <span class="hljs-keyword">return</span> a<br>        &#125;<br>    &#125;);<br>    s.<span class="hljs-property">EvpKDF</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">b, d, e</span>) &#123;<br>        <span class="hljs-keyword">return</span> p.<span class="hljs-title function_">create</span>(e).<span class="hljs-title function_">compute</span>(b,<br>            d)<br>    &#125;<br>&#125;)();<br><span class="hljs-title class_">CryptoJS</span>.<span class="hljs-property">lib</span>.<span class="hljs-property">Cipher</span> || <span class="hljs-keyword">function</span> (<span class="hljs-params">s</span>) &#123;<br>    <span class="hljs-keyword">var</span> l = <span class="hljs-title class_">CryptoJS</span>, e = l.<span class="hljs-property">lib</span>, n = e.<span class="hljs-property">Base</span>, p = e.<span class="hljs-property">WordArray</span>, b = e.<span class="hljs-property">BufferedBlockAlgorithm</span>, d = l.<span class="hljs-property">enc</span>.<span class="hljs-property">Base64</span>,<br>        t = l.<span class="hljs-property">algo</span>.<span class="hljs-property">EvpKDF</span>, q = e.<span class="hljs-property">Cipher</span> = b.<span class="hljs-title function_">extend</span>(&#123;<br>            <span class="hljs-attr">cfg</span>: n.<span class="hljs-title function_">extend</span>(), <span class="hljs-attr">createEncryptor</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">create</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_ENC_XFORM_MODE</span>, a, f)<br>            &#125;, <span class="hljs-attr">createDecryptor</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">create</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_DEC_XFORM_MODE</span>, a, f)<br>            &#125;, <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f, c</span>) &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(c);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_xformMode</span> = a;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">_key</span> = f;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reset</span>()<br>            &#125;, <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                b.<span class="hljs-property">reset</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doReset</span>()<br>            &#125;, <span class="hljs-attr">process</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_append</span>(a);<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>()<br>            &#125;,<br>            <span class="hljs-attr">finalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                a &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_append</span>(a);<br>                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_doFinalize</span>()<br>            &#125;, <span class="hljs-attr">keySize</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">ivSize</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">_ENC_XFORM_MODE</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">_DEC_XFORM_MODE</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">_createHelper</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>                <span class="hljs-keyword">return</span> &#123;<br>                    <span class="hljs-attr">encrypt</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">f, b, d</span>) &#123;<br>                        <span class="hljs-keyword">return</span> (<span class="hljs-string">&quot;string&quot;</span> == <span class="hljs-keyword">typeof</span> b ? G : c).<span class="hljs-title function_">encrypt</span>(a, f, b, d)<br>                    &#125;, <span class="hljs-attr">decrypt</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">f, b, d</span>) &#123;<br>                        <span class="hljs-keyword">return</span> (<span class="hljs-string">&quot;string&quot;</span> == <span class="hljs-keyword">typeof</span> b ? G : c).<span class="hljs-title function_">decrypt</span>(a, f, b, d)<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;);<br>    e.<span class="hljs-property">StreamCipher</span> = q.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">_doFinalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>(!<span class="hljs-number">0</span>)<br>        &#125;, <span class="hljs-attr">blockSize</span>: <span class="hljs-number">1</span><br>    &#125;);<br>    <span class="hljs-keyword">var</span> a = l.<span class="hljs-property">mode</span> = &#123;&#125;, v = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f, b</span>) &#123;<br>        <span class="hljs-keyword">var</span> c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_iv</span>;<br>        c ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">_iv</span> = s : c = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_prevBlock</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> d = <span class="hljs-number">0</span>; d &lt; b; d++) a[f + d] ^=<br>            c[d]<br>    &#125;, u = (e.<span class="hljs-property">BlockCipherMode</span> = n.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">createEncryptor</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">Encryptor</span>.<span class="hljs-title function_">create</span>(a, f)<br>        &#125;, <span class="hljs-attr">createDecryptor</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">Decryptor</span>.<span class="hljs-title function_">create</span>(a, f)<br>        &#125;, <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cipher</span> = a;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_iv</span> = f<br>        &#125;<br>    &#125;)).<span class="hljs-title function_">extend</span>();<br>    u.<span class="hljs-property">Encryptor</span> = u.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">processBlock</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>            <span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cipher</span>, c = b.<span class="hljs-property">blockSize</span>;<br>            v.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, a, f, c);<br>            b.<span class="hljs-title function_">encryptBlock</span>(a, f);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_prevBlock</span> = a.<span class="hljs-title function_">slice</span>(f, f + c)<br>        &#125;<br>    &#125;);<br>    u.<span class="hljs-property">Decryptor</span> = u.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">processBlock</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>            <span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cipher</span>, c = b.<span class="hljs-property">blockSize</span>, d = a.<span class="hljs-title function_">slice</span>(f, f + c);<br>            b.<span class="hljs-title function_">decryptBlock</span>(a, f);<br>            v.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>,<br>                a, f, c);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_prevBlock</span> = d<br>        &#125;<br>    &#125;);<br>    a = a.<span class="hljs-property">CBC</span> = u;<br>    u = (l.<span class="hljs-property">pad</span> = &#123;&#125;).<span class="hljs-property">Pkcs7</span> = &#123;<br>        <span class="hljs-attr">pad</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, f</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-number">4</span> * f, b = b - a.<span class="hljs-property">sigBytes</span> % b, c = b &lt;&lt; <span class="hljs-number">24</span> | b &lt;&lt; <span class="hljs-number">16</span> | b &lt;&lt; <span class="hljs-number">8</span> | b, d = [], e = <span class="hljs-number">0</span>; e &lt; b; e += <span class="hljs-number">4</span>) d.<span class="hljs-title function_">push</span>(c);<br>            b = p.<span class="hljs-title function_">create</span>(d, b);<br>            a.<span class="hljs-title function_">concat</span>(b)<br>        &#125;, <span class="hljs-attr">unpad</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            a.<span class="hljs-property">sigBytes</span> -= a.<span class="hljs-property">words</span>[a.<span class="hljs-property">sigBytes</span> - <span class="hljs-number">1</span> &gt;&gt;&gt; <span class="hljs-number">2</span>] &amp; <span class="hljs-number">255</span><br>        &#125;<br>    &#125;;<br>    e.<span class="hljs-property">BlockCipher</span> = q.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: q.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(&#123;<span class="hljs-attr">mode</span>: a, <span class="hljs-attr">padding</span>: u&#125;), <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            q.<span class="hljs-property">reset</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>            <span class="hljs-keyword">var</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>, b = a.<span class="hljs-property">iv</span>, a = a.<span class="hljs-property">mode</span>;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_xformMode</span> == <span class="hljs-variable language_">this</span>.<span class="hljs-property">_ENC_XFORM_MODE</span>) <span class="hljs-keyword">var</span> c = a.<span class="hljs-property">createEncryptor</span>; <span class="hljs-keyword">else</span> c = a.<span class="hljs-property">createDecryptor</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_minBufferSize</span> = <span class="hljs-number">1</span>;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_mode</span> = c.<span class="hljs-title function_">call</span>(a,<br>                <span class="hljs-variable language_">this</span>, b &amp;&amp; b.<span class="hljs-property">words</span>)<br>        &#125;, <span class="hljs-attr">_doProcessBlock</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_mode</span>.<span class="hljs-title function_">processBlock</span>(a, b)<br>        &#125;, <span class="hljs-attr">_doFinalize</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-property">padding</span>;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_xformMode</span> == <span class="hljs-variable language_">this</span>.<span class="hljs-property">_ENC_XFORM_MODE</span>) &#123;<br>                a.<span class="hljs-title function_">pad</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_data</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">blockSize</span>);<br>                <span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>(!<span class="hljs-number">0</span>)<br>            &#125; <span class="hljs-keyword">else</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_process</span>(!<span class="hljs-number">0</span>), a.<span class="hljs-title function_">unpad</span>(b);<br>            <span class="hljs-keyword">return</span> b<br>        &#125;, <span class="hljs-attr">blockSize</span>: <span class="hljs-number">4</span><br>    &#125;);<br>    <span class="hljs-keyword">var</span> w = e.<span class="hljs-property">CipherParams</span> = n.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">mixIn</span>(a)<br>        &#125;, <span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">return</span> (a || <span class="hljs-variable language_">this</span>.<span class="hljs-property">formatter</span>).<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>)<br>        &#125;<br>    &#125;), a = (l.<span class="hljs-property">format</span> = &#123;&#125;).<span class="hljs-property">OpenSSL</span> = &#123;<br>        <span class="hljs-attr">stringify</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">var</span> b = a.<span class="hljs-property">ciphertext</span>;<br>            a = a.<span class="hljs-property">salt</span>;<br>            <span class="hljs-keyword">return</span> (a ? p.<span class="hljs-title function_">create</span>([<span class="hljs-number">1398893684</span>,<br>                <span class="hljs-number">1701076831</span>]).<span class="hljs-title function_">concat</span>(a).<span class="hljs-title function_">concat</span>(b) : b).<span class="hljs-title function_">toString</span>(d)<br>        &#125;, <span class="hljs-attr">parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            a = d.<span class="hljs-title function_">parse</span>(a);<br>            <span class="hljs-keyword">var</span> b = a.<span class="hljs-property">words</span>;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-number">1398893684</span> == b[<span class="hljs-number">0</span>] &amp;&amp; <span class="hljs-number">1701076831</span> == b[<span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-keyword">var</span> c = p.<span class="hljs-title function_">create</span>(b.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>));<br>                b.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">4</span>);<br>                a.<span class="hljs-property">sigBytes</span> -= <span class="hljs-number">16</span><br>            &#125;<br>            <span class="hljs-keyword">return</span> w.<span class="hljs-title function_">create</span>(&#123;<span class="hljs-attr">ciphertext</span>: a, <span class="hljs-attr">salt</span>: c&#125;)<br>        &#125;<br>    &#125;, c = e.<span class="hljs-property">SerializableCipher</span> = n.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: n.<span class="hljs-title function_">extend</span>(&#123;<span class="hljs-attr">format</span>: a&#125;), <span class="hljs-attr">encrypt</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d</span>) &#123;<br>            d = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(d);<br>            <span class="hljs-keyword">var</span> e = a.<span class="hljs-title function_">createEncryptor</span>(c, d);<br>            b = e.<span class="hljs-title function_">finalize</span>(b);<br>            e = e.<span class="hljs-property">cfg</span>;<br>            <span class="hljs-keyword">return</span> w.<span class="hljs-title function_">create</span>(&#123;<br>                <span class="hljs-attr">ciphertext</span>: b,<br>                <span class="hljs-attr">key</span>: c,<br>                <span class="hljs-attr">iv</span>: e.<span class="hljs-property">iv</span>,<br>                <span class="hljs-attr">algorithm</span>: a,<br>                <span class="hljs-attr">mode</span>: e.<span class="hljs-property">mode</span>,<br>                <span class="hljs-attr">padding</span>: e.<span class="hljs-property">padding</span>,<br>                <span class="hljs-attr">blockSize</span>: a.<span class="hljs-property">blockSize</span>,<br>                <span class="hljs-attr">formatter</span>: d.<span class="hljs-property">format</span><br>            &#125;)<br>        &#125;,<br>        <span class="hljs-attr">decrypt</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d</span>) &#123;<br>            d = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(d);<br>            b = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_parse</span>(b, d.<span class="hljs-property">format</span>);<br>            <span class="hljs-keyword">return</span> a.<span class="hljs-title function_">createDecryptor</span>(c, d).<span class="hljs-title function_">finalize</span>(b.<span class="hljs-property">ciphertext</span>)<br>        &#125;, <span class="hljs-attr">_parse</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;string&quot;</span> == <span class="hljs-keyword">typeof</span> a ? b.<span class="hljs-title function_">parse</span>(a, <span class="hljs-variable language_">this</span>) : a<br>        &#125;<br>    &#125;), l = (l.<span class="hljs-property">kdf</span> = &#123;&#125;).<span class="hljs-property">OpenSSL</span> = &#123;<br>        <span class="hljs-attr">execute</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d</span>) &#123;<br>            d || (d = p.<span class="hljs-title function_">random</span>(<span class="hljs-number">8</span>));<br>            a = t.<span class="hljs-title function_">create</span>(&#123;<span class="hljs-attr">keySize</span>: b + c&#125;).<span class="hljs-title function_">compute</span>(a, d);<br>            c = p.<span class="hljs-title function_">create</span>(a.<span class="hljs-property">words</span>.<span class="hljs-title function_">slice</span>(b), <span class="hljs-number">4</span> * c);<br>            a.<span class="hljs-property">sigBytes</span> = <span class="hljs-number">4</span> * b;<br>            <span class="hljs-keyword">return</span> w.<span class="hljs-title function_">create</span>(&#123;<span class="hljs-attr">key</span>: a, <span class="hljs-attr">iv</span>: c, <span class="hljs-attr">salt</span>: d&#125;)<br>        &#125;<br>    &#125;, G = e.<span class="hljs-property">PasswordBasedCipher</span> = c.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: c.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(&#123;<span class="hljs-attr">kdf</span>: l&#125;), <span class="hljs-attr">encrypt</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, d, e</span>) &#123;<br>            e = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(e);<br>            d = e.<span class="hljs-property">kdf</span>.<span class="hljs-title function_">execute</span>(d,<br>                a.<span class="hljs-property">keySize</span>, a.<span class="hljs-property">ivSize</span>);<br>            e.<span class="hljs-property">iv</span> = d.<span class="hljs-property">iv</span>;<br>            a = c.<span class="hljs-property">encrypt</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, a, b, d.<span class="hljs-property">key</span>, e);<br>            a.<span class="hljs-title function_">mixIn</span>(d);<br>            <span class="hljs-keyword">return</span> a<br>        &#125;, <span class="hljs-attr">decrypt</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, d, e</span>) &#123;<br>            e = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(e);<br>            b = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_parse</span>(b, e.<span class="hljs-property">format</span>);<br>            d = e.<span class="hljs-property">kdf</span>.<span class="hljs-title function_">execute</span>(d, a.<span class="hljs-property">keySize</span>, a.<span class="hljs-property">ivSize</span>, b.<span class="hljs-property">salt</span>);<br>            e.<span class="hljs-property">iv</span> = d.<span class="hljs-property">iv</span>;<br>            <span class="hljs-keyword">return</span> c.<span class="hljs-property">decrypt</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, a, b, d.<span class="hljs-property">key</span>, e)<br>        &#125;<br>    &#125;)<br>&#125;();<br>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">s</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_S</span>, d = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_i</span>, e = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_j</span>, q = <span class="hljs-number">0</span>, a = <span class="hljs-number">0</span>; <span class="hljs-number">4</span> &gt; a; a++) &#123;<br>            <span class="hljs-keyword">var</span> d = (d + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>, e = (e + b[d]) % <span class="hljs-number">256</span>, l = b[d];<br>            b[d] = b[e];<br>            b[e] = l;<br>            q |= b[(b[d] + b[e]) % <span class="hljs-number">256</span>] &lt;&lt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * a<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_i</span> = d;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_j</span> = e;<br>        <span class="hljs-keyword">return</span> q<br>    &#125;<br><br>    <span class="hljs-keyword">var</span> l = <span class="hljs-title class_">CryptoJS</span>, e = l.<span class="hljs-property">lib</span>.<span class="hljs-property">StreamCipher</span>, n = l.<span class="hljs-property">algo</span>, p = n.<span class="hljs-property">RC4</span> = e.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">_doReset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_key</span>, d = b.<span class="hljs-property">words</span>, b = b.<span class="hljs-property">sigBytes</span>, e = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_S</span> = [], l = <span class="hljs-number">0</span>; <span class="hljs-number">256</span> &gt; l; l++) e[l] = l;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> a = l = <span class="hljs-number">0</span>; <span class="hljs-number">256</span> &gt; l; l++) &#123;<br>                <span class="hljs-keyword">var</span> n = l % b, a = (a + e[l] + (d[n &gt;&gt;&gt; <span class="hljs-number">2</span>] &gt;&gt;&gt; <span class="hljs-number">24</span> - <span class="hljs-number">8</span> * (n % <span class="hljs-number">4</span>) &amp; <span class="hljs-number">255</span>)) % <span class="hljs-number">256</span>, n = e[l];<br>                e[l] = e[a];<br>                e[a] = n<br>            &#125;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">_i</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_j</span> = <span class="hljs-number">0</span><br>        &#125;, <span class="hljs-attr">_doProcessBlock</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">b,</span><br><span class="hljs-params">                                      d</span>) &#123;<br>            b[d] ^= s.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>)<br>        &#125;, <span class="hljs-attr">keySize</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">ivSize</span>: <span class="hljs-number">0</span><br>    &#125;);<br>    l.<span class="hljs-property">RC4</span> = e.<span class="hljs-title function_">_createHelper</span>(p);<br>    n = n.<span class="hljs-property">RC4Drop</span> = p.<span class="hljs-title function_">extend</span>(&#123;<br>        <span class="hljs-attr">cfg</span>: p.<span class="hljs-property">cfg</span>.<span class="hljs-title function_">extend</span>(&#123;<span class="hljs-attr">drop</span>: <span class="hljs-number">192</span>&#125;), <span class="hljs-attr">_doReset</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            p.<span class="hljs-property">_doReset</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cfg</span>.<span class="hljs-property">drop</span>; <span class="hljs-number">0</span> &lt; b; b--) s.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>)<br>        &#125;<br>    &#125;);<br>    l.<span class="hljs-property">RC4Drop</span> = e.<span class="hljs-title function_">_createHelper</span>(n)<br>&#125;)();<br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/JavaScript/%E5%8A%A0%E5%AF%86%E6%BA%90%E7%A0%81/" class="category-chain-item">加密源码</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%A0%E5%AF%86%E6%BA%90%E7%A0%81/">#加密源码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Rc4</div>
+      <div>https://sign226.github.io/posts/ff1def1d/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SignCc</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/9300bf14/" title="Sha1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Sha1</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/d021ad01/" title="Md5">
+                        <span class="hidden-mobile">Md5</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","appKey":"VF6l5XVkCCe4IDy6xqkhusUe","path":"window.location.pathname","placeholder":"说点什么吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

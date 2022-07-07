@@ -24,7 +24,7 @@
 <meta property="og:description" content="adb常用命令1. 显示连接到计算机设备1adb devices 2. 连接设备1adb connect 127.0.0.1:7555 &#x2F;&#x2F;雷电模拟器端口 3. 重启设备1adb reboot 4. 查看手机安装app包名123adb shell pm list packages &#x2F;&#x2F; 查看所有应用列表adb shell pm list packages -s &#x2F;&#x2F; 查看系统应用列表adb she">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-06T09:22:03.000Z">
-<meta property="article:modified_time" content="2022-07-06T09:28:25.154Z">
+<meta property="article:modified_time" content="2022-07-07T03:20:51.657Z">
 <meta property="article:author" content="SignCc">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -218,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          615 字
+          592 字
         
       </span>
     
@@ -229,7 +229,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -288,7 +288,10 @@
 <h3 id="5-安装apk"><a href="#5-安装apk" class="headerlink" title="5. 安装apk"></a>5. 安装apk</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb install &#x27;path&#x27;<br>adb -s &quot;ip_port&quot; install -r &quot;app_path&quot; // 安装指定ip<br></code></pre></td></tr></table></figure>
 <h3 id="6-卸载apk"><a href="#6-卸载apk" class="headerlink" title="6. 卸载apk"></a>6. 卸载apk</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb uninstall &#x27;packagename&#x27;<br></code></pre></td></tr></table></figure>
 <h3 id="7-启动app"><a href="#7-启动app" class="headerlink" title="7. 启动app"></a>7. 启动app</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell am start -n &quot;package_name&quot;/.&quot;activity_class_name&quot;<br></code></pre></td></tr></table></figure>
-<h3 id="8-查看进程列表"><a href="#8-查看进程列表" class="headerlink" title="8. 查看进程列表"></a>8. 查看进程列表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell ps<br>```   <br>### 9. 杀死进程<br>```commandline<br>adb shell kill pid<br></code></pre></td></tr></table></figure>
+<h3 id="8-查看进程列表"><a href="#8-查看进程列表" class="headerlink" title="8. 查看进程列表"></a>8. 查看进程列表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell ps<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-杀死进程"><a href="#9-杀死进程" class="headerlink" title="9. 杀死进程"></a>9. 杀死进程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell kill pid<br></code></pre></td></tr></table></figure>
+
 <h3 id="10-查看app版本号"><a href="#10-查看app版本号" class="headerlink" title="10. 查看app版本号"></a>10. 查看app版本号</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell pm dump com.ss.android.ugc.aweme | findstr &quot;version&quot;<br></code></pre></td></tr></table></figure>
 
 <h3 id="11-查看手机cpu架构"><a href="#11-查看手机cpu架构" class="headerlink" title="11. 查看手机cpu架构"></a>11. 查看手机cpu架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell getprop ro.product.cpu.abi<br></code></pre></td></tr></table></figure>

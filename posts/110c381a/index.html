@@ -16,22 +16,22 @@
   <meta name="author" content="SignCc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux 基本命令1. 关键词查询1grep &quot;关键词&quot; 文件名称 |wc -l 2. 查看进程1ps -aux | grep &#96;python3&#96; 2. 后台挂起启动python命令1nohup python3 text.py &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp; 3. 解压 &#x2F; 压缩123456zip:    zip –r test.zip te">
+    <meta name="description" content="AST去除控制流平坦化1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374const fs &#x3D; require(&amp;#x27;fs&amp;#x27;);const parser &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux基本命令">
-<meta property="og:url" content="https://sign226.github.io/posts/4b6ea061/index.html">
+<meta property="og:title" content="AST-去除控制流平坦化">
+<meta property="og:url" content="https://sign226.github.io/posts/110c381a/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Linux 基本命令1. 关键词查询1grep &quot;关键词&quot; 文件名称 |wc -l 2. 查看进程1ps -aux | grep &#96;python3&#96; 2. 后台挂起启动python命令1nohup python3 text.py &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp; 3. 解压 &#x2F; 压缩123456zip:    zip –r test.zip te">
+<meta property="og:description" content="AST去除控制流平坦化1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374const fs &#x3D; require(&amp;#x27;fs&amp;#x27;);const parser &#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-07T02:34:28.000Z">
-<meta property="article:modified_time" content="2022-07-07T02:49:34.101Z">
+<meta property="article:published_time" content="2022-07-07T09:03:40.000Z">
+<meta property="article:modified_time" content="2022-07-07T09:05:25.516Z">
 <meta property="article:author" content="SignCc">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="AST">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Linux基本命令 - </title>
+  <title>AST-去除控制流平坦化 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux基本命令"></span>
+            <span id="subtitle" data-typed-text="AST-去除控制流平坦化"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-07 10:34" pubdate>
-          2022年7月7日 上午
+        <time datetime="2022-07-07 17:03" pubdate>
+          2022年7月7日 下午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          724 字
+          2k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          7 分钟
+          17 分钟
         
       </span>
     
@@ -276,22 +276,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux基本命令</h1>
+            <h1 style="display: none">AST-去除控制流平坦化</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Linux-基本命令"><a href="#Linux-基本命令" class="headerlink" title="Linux 基本命令"></a>Linux 基本命令</h2><h3 id="1-关键词查询"><a href="#1-关键词查询" class="headerlink" title="1. 关键词查询"></a>1. 关键词查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">grep &quot;关键词&quot; 文件名称 |wc -l<br></code></pre></td></tr></table></figure>
-<h3 id="2-查看进程"><a href="#2-查看进程" class="headerlink" title="2. 查看进程"></a>2. 查看进程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">ps -aux | grep `python3`<br></code></pre></td></tr></table></figure>
-<h3 id="2-后台挂起启动python命令"><a href="#2-后台挂起启动python命令" class="headerlink" title="2. 后台挂起启动python命令"></a>2. 后台挂起启动python命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">nohup python3 text.py &gt; /dev/null 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
-<h3 id="3-解压-压缩"><a href="#3-解压-压缩" class="headerlink" title="3. 解压 / 压缩"></a>3. 解压 / 压缩</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs commandline">zip:<br>    zip –r test.zip test // 将test压缩为test.zip<br>    unzip test.zip // 解压<br>tar:<br>    tar -czvf test.tar.gz test //将test压缩为test.tar.gz<br>    tar -xzvf test.tar.gz // 解压<br></code></pre></td></tr></table></figure>
-
-<h3 id="4-文件操作"><a href="#4-文件操作" class="headerlink" title="4. 文件操作"></a>4. 文件操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs commandline">pwd //显示工作路径<br>ls -a //显示隐藏文件<br>mkdir 文件夹 // 创建文件夹<br>rm -rf 文件名 //删除文件<br>cp /dir1/ /dir2/  //复制文件到指定目录<br>touch newfile // 创建一个新空文件<br>cat|less|more // 查看文件<br>find  // 查找<br>    find . -name *.log 在当前目录查找以.log结尾的文件<br>    find / -name log 在根目录查找log命名的目录<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-查看日志"><a href="#5-查看日志" class="headerlink" title="5. 查看日志"></a>5. 查看日志</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs commandline">tail -f /data/.../***.log<br>```          <br><br>### 6. 查看网络状况<br>```commandline<br>netstat -apn // 查看所有端口<br>an //按一定顺序排列输出<br>p //表示显示哪个进程在调用<br></code></pre></td></tr></table></figure>
-<h3 id="7-上传-下载"><a href="#7-上传-下载" class="headerlink" title="7. 上传 下载"></a>7. 上传 下载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">rz // 上传<br>sz // 下载<br></code></pre></td></tr></table></figure>
-
-<h2 id="8-防火墙"><a href="#8-防火墙" class="headerlink" title="8. 防火墙"></a>8. 防火墙</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">service iptables start // 开启防火墙<br>service iptables stop // 关闭防火墙<br><br>chkconfig iptables on // 永久开启<br>chkconfig iptables off // 永久关闭<br></code></pre></td></tr></table></figure>
+                <h2 id="AST去除控制流平坦化"><a href="#AST去除控制流平坦化" class="headerlink" title="AST去除控制流平坦化"></a>AST去除控制流平坦化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-keyword">const</span> parser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@babel/parser&quot;</span>);<br><span class="hljs-keyword">const</span> traverse = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@babel/traverse&quot;</span>).<span class="hljs-property">default</span>;<br><span class="hljs-keyword">const</span> t = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@babel/types&quot;</span>);<br><span class="hljs-keyword">const</span> generator = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@babel/generator&quot;</span>).<span class="hljs-property">default</span>;<br><br><br>encodeFile = <span class="hljs-string">&quot;./sourceCode.js&quot;</span>;<br>decodeFile = <span class="hljs-string">&quot;./result.js&quot;</span>;<br><br><span class="hljs-keyword">let</span> sourceCode = fs.<span class="hljs-title function_">readFileSync</span>(encodeFile, &#123;<span class="hljs-attr">encoding</span>: <span class="hljs-string">&quot;utf-8&quot;</span>&#125;);<br><br><span class="hljs-keyword">const</span> ast = parser.<span class="hljs-title function_">parse</span>(sourceCode);<br><br><span class="hljs-keyword">const</span> compactSwitch = &#123;<br><br>    <span class="hljs-title class_">ForStatement</span>(path) &#123;<br>        <span class="hljs-keyword">let</span> &#123;init, test, update, body&#125; = path.<span class="hljs-property">node</span>;<br>        <span class="hljs-keyword">if</span> (!t.<span class="hljs-title function_">isVariableDeclaration</span>(init) ||<br>            !t.<span class="hljs-title function_">isBinaryExpression</span>(test) ||<br>            update != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (!body.<span class="hljs-property">body</span> || body.<span class="hljs-property">body</span>.<span class="hljs-property">length</span> != <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span>;<br><br>        <span class="hljs-keyword">if</span> (!t.<span class="hljs-title function_">isVariableDeclaration</span>(body.<span class="hljs-property">body</span>[<span class="hljs-number">0</span>]) ||<br>            !t.<span class="hljs-title function_">isSwitchStatement</span>(body.<span class="hljs-property">body</span>[<span class="hljs-number">1</span>])) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">let</span> switchNode = [];<br><br>        <span class="hljs-keyword">let</span> switchId = init.<span class="hljs-property">declarations</span>[<span class="hljs-number">0</span>].<span class="hljs-property">id</span>;<br>        <span class="hljs-keyword">let</span> shiftValue = <span class="hljs-number">5</span>;<br>        <span class="hljs-keyword">let</span> cr = <span class="hljs-number">0</span>, kr = <span class="hljs-number">0</span>, or = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">let</span> cases = body.<span class="hljs-property">body</span>[<span class="hljs-number">1</span>].<span class="hljs-property">cases</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-title class_">SwitchCase</span> <span class="hljs-keyword">of</span> cases) &#123;<br>            <span class="hljs-keyword">let</span> &#123;test, consequent&#125; = <span class="hljs-title class_">SwitchCase</span>;<br>            cr = test.<span class="hljs-property">value</span>;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;cr&quot;</span>, cr)<br>            <span class="hljs-keyword">if</span> (consequent.<span class="hljs-property">length</span> == <span class="hljs-number">2</span> &amp;&amp; t.<span class="hljs-title function_">isSwitchStatement</span>(consequent[<span class="hljs-number">0</span>])) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-title class_">SwitchCase</span> <span class="hljs-keyword">of</span> consequent[<span class="hljs-number">0</span>].<span class="hljs-property">cases</span>) &#123;<br>                    <span class="hljs-keyword">let</span> &#123;test, consequent&#125; = <span class="hljs-title class_">SwitchCase</span>;<br>                    kr = test.<span class="hljs-property">value</span>;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;kr&quot;</span>, kr)<br>                    <span class="hljs-keyword">let</span> value = cr + (kr &lt;&lt; shiftValue);<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;value&quot;</span>, value)<br>                    <span class="hljs-keyword">let</span> newNode = t.<span class="hljs-title class_">SwitchCase</span>(t.<span class="hljs-title function_">valueToNode</span>(value), consequent);<br>                    switchNode.<span class="hljs-title function_">push</span>(newNode);<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">let</span> value = cr;<br>                <span class="hljs-keyword">let</span> newNode = t.<span class="hljs-title class_">SwitchCase</span>(t.<span class="hljs-title function_">valueToNode</span>(value), consequent);<br>                switchNode.<span class="hljs-title function_">push</span>(newNode);<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (switchNode.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>            switchNode = t.<span class="hljs-title class_">SwitchStatement</span>(switchId, switchNode);<br>            body.<span class="hljs-property">body</span> = [switchNode];<br>        &#125;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-title function_">traverse</span>(ast, compactSwitch);<br><br><br><span class="hljs-keyword">let</span> &#123;code&#125; = <span class="hljs-title function_">generator</span>(ast, opts = &#123;<span class="hljs-attr">jsescOption</span>: &#123;<span class="hljs-string">&quot;minimal&quot;</span>: <span class="hljs-literal">true</span>&#125;&#125;);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(code)<br>fs.<span class="hljs-title function_">writeFile</span>(decodeFile, code, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>&#125;);<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -309,8 +299,29 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/JS%E9%80%86%E5%90%91/" class="category-chain-item">JS逆向</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/JS%E9%80%86%E5%90%91/AST%E8%BF%98%E5%8E%9F/" class="category-chain-item">AST还原</a>
+  
+  
+
+  
+
+  
+
   
 
       </span>
@@ -324,7 +335,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/">#Linux</a>
+        <a href="/tags/AST/">#AST</a>
       
     </div>
   
@@ -336,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux基本命令</div>
-      <div>https://sign226.github.io/posts/4b6ea061/</div>
+      <div>AST-去除控制流平坦化</div>
+      <div>https://sign226.github.io/posts/110c381a/</div>
     </div>
     <div class="license-meta">
       
@@ -379,18 +390,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/99832f47/" title="Python基础">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Python基础</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/3a86036f/" title="sha512">
-                        <span class="hidden-mobile">sha512</span>
+                      <a href="/posts/61524743/" title="去除逗号表达式">
+                        <span class="hidden-mobile">去除逗号表达式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

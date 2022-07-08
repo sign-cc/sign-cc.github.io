@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SignCc">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="生成各类鼠标轨迹1. 极验鼠标轨迹适用平台: - 某验 - 某书PC  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鼠标轨迹生成">
+<meta property="og:url" content="https://sign-cc.github.io/posts/79e14e4c/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="生成各类鼠标轨迹1. 极验鼠标轨迹适用平台: - 某验 - 某书PC  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-08T06:11:16.000Z">
+<meta property="article:modified_time" content="2022-07-08T06:30:43.612Z">
+<meta property="article:author" content="SignCc">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>鼠标轨迹生成 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sign-cc.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","app_key":"VF6l5XVkCCe4IDy6xqkhusUe","server_url":"https://0yd4gwf8.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>今有大鱼名为咸</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="鼠标轨迹生成"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-08 14:11" pubdate>
+          2022年7月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">鼠标轨迹生成</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="生成各类鼠标轨迹"><a href="#生成各类鼠标轨迹" class="headerlink" title="生成各类鼠标轨迹"></a>生成各类鼠标轨迹</h2><h3 id="1-极验鼠标轨迹"><a href="#1-极验鼠标轨迹" class="headerlink" title="1. 极验鼠标轨迹"></a>1. 极验鼠标轨迹</h3><p>适用平台:</p>
+<pre><code class="hljs">- 某验
+- 某书PC
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">GTrace</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.__pos_x = []<br>        self.__pos_y = []<br>        self.__pos_z = []<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__set_pt_time</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        设置各节点的时间</span><br><span class="hljs-string">        分析不同时间间隔中X坐标数量的占比</span><br><span class="hljs-string">        统计结果: 1. 80%~90%的X坐标在15~20毫秒之间</span><br><span class="hljs-string">                2. 10%~15%在20~200及以上，其中 [-a, 0, x, ...] 这里x只有一个，取值在110~200之间</span><br><span class="hljs-string">                    坐标集最后3~5个坐标取值再50~400之间，最后一个坐标数值最大</span><br><span class="hljs-string"></span><br><span class="hljs-string">        滑动总时间的取值规则: 图片宽度260，去掉滑块的宽度剩下200;</span><br><span class="hljs-string">                        如果距离小于100，则耗时1300~1900之间</span><br><span class="hljs-string">                        如果距离大于100，则耗时1700~2100之间</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        __end_pt_time = []<br>        __move_pt_time = []<br>        self.__pos_z = []<br><br>        total_move_time = self.__need_time * random.uniform(<span class="hljs-number">0.8</span>, <span class="hljs-number">0.9</span>)<br>        start_point_time = random.uniform(<span class="hljs-number">110</span>, <span class="hljs-number">200</span>)<br>        __start_pt_time = [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">int</span>(start_point_time)]<br><br>        sum_move_time = <span class="hljs-number">0</span><br><br>        _tmp_total_move_time = total_move_time<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            delta_time = random.uniform(<span class="hljs-number">15</span>, <span class="hljs-number">20</span>)<br>            <span class="hljs-keyword">if</span> _tmp_total_move_time &lt; delta_time:<br>                <span class="hljs-keyword">break</span><br><br>            sum_move_time += delta_time<br>            _tmp_total_move_time -= delta_time<br>            __move_pt_time.append(<span class="hljs-built_in">int</span>(start_point_time+sum_move_time))<br><br>        last_pt_time = __move_pt_time[-<span class="hljs-number">1</span>]<br>        __move_pt_time.append(last_pt_time+_tmp_total_move_time)<br><br>        sum_end_time = start_point_time + total_move_time<br>        other_point_time = self.__need_time - sum_end_time<br>        end_first_ptime = other_point_time / <span class="hljs-number">2</span><br><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            delta_time = random.uniform(<span class="hljs-number">110</span>, <span class="hljs-number">200</span>)<br>            <span class="hljs-keyword">if</span> end_first_ptime - delta_time &lt;= <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">break</span><br><br>            end_first_ptime -= delta_time<br>            sum_end_time += delta_time<br>            __end_pt_time.append(<span class="hljs-built_in">int</span>(sum_end_time))<br><br>        __end_pt_time.append(<span class="hljs-built_in">int</span>(sum_end_time + (other_point_time/<span class="hljs-number">2</span> + end_first_ptime)))<br>        self.__pos_z.extend(__start_pt_time)<br>        self.__pos_z.extend(__move_pt_time)<br>        self.__pos_z.extend(__end_pt_time)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__set_distance</span>(<span class="hljs-params">self, _dist</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        设置要生成的轨迹长度</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        self.__distance = _dist<br><br>        <span class="hljs-keyword">if</span> _dist &lt; <span class="hljs-number">100</span>:<br>            self.__need_time = <span class="hljs-built_in">int</span>(random.uniform(<span class="hljs-number">500</span>, <span class="hljs-number">1500</span>))<br>        <span class="hljs-keyword">else</span>:<br>            self.__need_time = <span class="hljs-built_in">int</span>(random.uniform(<span class="hljs-number">1000</span>, <span class="hljs-number">2000</span>))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__get_pos_z</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> self.__pos_z<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__get_pos_y</span>(<span class="hljs-params">self</span>):<br>        _pos_y = [random.uniform(-<span class="hljs-number">40</span>, -<span class="hljs-number">18</span>), <span class="hljs-number">0</span>]<br>        point_count = <span class="hljs-built_in">len</span>(self.__pos_z)<br>        x = np.linspace(-<span class="hljs-number">10</span>, <span class="hljs-number">15</span>, point_count - <span class="hljs-built_in">len</span>(_pos_y))<br>        arct_y = np.arctan(x)<br><br>        <span class="hljs-keyword">for</span> _, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(arct_y):<br>            _pos_y.append(val)<br><br>        <span class="hljs-keyword">return</span> _pos_y<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__get_pos_x</span>(<span class="hljs-params">self, _distance</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        绘制标准的数学函数图像: 以 tanh 开始 以 arctan 结尾</span><br><span class="hljs-string">        根据此模型用等比时间差生成X坐标</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-comment"># first_val = random.uniform(-40, -18)</span><br>        <span class="hljs-comment"># _distance += first_val</span><br>        _pos_x = [random.uniform(-<span class="hljs-number">40</span>, -<span class="hljs-number">18</span>), <span class="hljs-number">0</span>]<br>        self.__set_distance(_distance)<br>        self.__set_pt_time()<br><br>        point_count = <span class="hljs-built_in">len</span>(self.__pos_z)<br>        x = np.linspace(-<span class="hljs-number">1</span>, <span class="hljs-number">19</span>, point_count-<span class="hljs-built_in">len</span>(_pos_x))<br>        ss = np.arctan(x)<br>        th = np.tanh(x)<br><br>        <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(th)):<br>            <span class="hljs-keyword">if</span> th[idx] &lt; ss[idx]:<br>                th[idx] = ss[idx]<br><br>        th += <span class="hljs-number">1</span><br>        th *= (_distance / <span class="hljs-number">2.5</span>)<br><br>        i = <span class="hljs-number">0</span><br>        start_idx = <span class="hljs-built_in">int</span>(point_count/<span class="hljs-number">10</span>)<br>        end_idx = <span class="hljs-built_in">int</span>(point_count/<span class="hljs-number">50</span>)<br>        delta_pt = <span class="hljs-built_in">abs</span>(np.random.normal(scale=<span class="hljs-number">1.1</span>, size=point_count-start_idx-end_idx))<br>        <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(start_idx, point_count):<br>            <span class="hljs-keyword">if</span> idx*<span class="hljs-number">1.3</span> &gt; <span class="hljs-built_in">len</span>(delta_pt):<br>                <span class="hljs-keyword">break</span><br><br>            th[idx] += delta_pt[i]<br>            i+=<span class="hljs-number">1</span><br><br>        _pos_x.extend(th)<br>        <span class="hljs-keyword">return</span> _pos_x[-<span class="hljs-number">1</span>], _pos_x<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_mouse_pos_path</span>(<span class="hljs-params">self, distance</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        获取滑动滑块鼠标的滑动轨迹坐标集合</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        result = []<br>        _distance, x = self.__get_pos_x(distance)<br>        y = self.__get_pos_y()<br>        z = self.__get_pos_z()<br><br>        <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(x)):<br>            result.append([<span class="hljs-built_in">int</span>(x[idx]), <span class="hljs-built_in">int</span>(y[idx]), <span class="hljs-built_in">int</span>(z[idx])])<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(_distance), result<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    GTrace().get_mouse_pos_path(<span class="hljs-number">130</span>)<br></code></pre></td></tr></table></figure>
+<p><strong><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1162979-1-1.html">参考链接</a></strong></p>
+<h3 id="2-贝塞尔曲线轨迹生成"><a href="#2-贝塞尔曲线轨迹生成" class="headerlink" title="2. 贝塞尔曲线轨迹生成"></a>2. 贝塞尔曲线轨迹生成</h3><p>适用平台:</p>
+<pre><code class="hljs">- 某宝
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BSRSlide</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_bztsg</span>(<span class="hljs-params">self, dataTrajectory</span>):<br>        lengthOfdata = <span class="hljs-built_in">len</span>(dataTrajectory)<br><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">staer</span>(<span class="hljs-params">x</span>):<br>            t = ((x - dataTrajectory[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]) / (dataTrajectory[-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] - dataTrajectory[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]))<br>            y = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], dtype=np.float64)<br>            <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(dataTrajectory)):<br>                y += dataTrajectory[s] * ((math.factorial(lengthOfdata - <span class="hljs-number">1</span>) / (<br>                        math.factorial(s) * math.factorial(lengthOfdata - <span class="hljs-number">1</span> - s))) * math.<span class="hljs-built_in">pow</span>(t, s) * math.<span class="hljs-built_in">pow</span>(<br>                    (<span class="hljs-number">1</span> - t), lengthOfdata - <span class="hljs-number">1</span> - s))<br>            <span class="hljs-keyword">return</span> y[<span class="hljs-number">1</span>]<br><br>        <span class="hljs-keyword">return</span> staer<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_type</span>(<span class="hljs-params">self, <span class="hljs-built_in">type</span>, x, numberList</span>):<br>        numberListre = []<br>        pin = (x[<span class="hljs-number">1</span>] - x[<span class="hljs-number">0</span>]) / numberList<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numberList):<br>                numberListre.append(i * pin)<br>            <span class="hljs-keyword">if</span> pin &gt;= <span class="hljs-number">0</span>:<br>                numberListre = numberListre[::-<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">elif</span> <span class="hljs-built_in">type</span> == <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numberList):<br>                numberListre.append(<span class="hljs-number">1</span> * ((i * pin) ** <span class="hljs-number">2</span>))<br>            numberListre = numberListre[::-<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">elif</span> <span class="hljs-built_in">type</span> == <span class="hljs-number">2</span>:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numberList):<br>                numberListre.append(<span class="hljs-number">1</span> * ((i * pin - x[<span class="hljs-number">1</span>]) ** <span class="hljs-number">2</span>))<br><br>        <span class="hljs-keyword">elif</span> <span class="hljs-built_in">type</span> == <span class="hljs-number">3</span>:<br>            dataTrajectory = [np.array([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>]), np.array([(x[<span class="hljs-number">1</span>] - x[<span class="hljs-number">0</span>]) * <span class="hljs-number">0.8</span>, (x[<span class="hljs-number">1</span>] - x[<span class="hljs-number">0</span>]) * <span class="hljs-number">0.6</span>]),<br>                              np.array([x[<span class="hljs-number">1</span>] - x[<span class="hljs-number">0</span>], <span class="hljs-number">0</span>])]<br>            fun = self._bztsg(dataTrajectory)<br>            numberListre = [<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, numberList):<br>                numberListre.append(fun(i * pin) + numberListre[-<span class="hljs-number">1</span>])<br>            <span class="hljs-keyword">if</span> pin &gt;= <span class="hljs-number">0</span>:<br>                numberListre = numberListre[::-<span class="hljs-number">1</span>]<br>        numberListre = np.<span class="hljs-built_in">abs</span>(np.array(numberListre) - <span class="hljs-built_in">max</span>(numberListre))<br>        biaoNumberList = ((numberListre - numberListre[numberListre.argmin()]) / (<br>                numberListre[numberListre.argmax()] - numberListre[numberListre.argmin()])) * (x[<span class="hljs-number">1</span>] - x[<span class="hljs-number">0</span>]) + x[<span class="hljs-number">0</span>]<br>        biaoNumberList[<span class="hljs-number">0</span>] = x[<span class="hljs-number">0</span>]<br>        biaoNumberList[-<span class="hljs-number">1</span>] = x[<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> biaoNumberList<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getFun</span>(<span class="hljs-params">self, s</span>):<br>        <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param s: 传入P点</span><br><span class="hljs-string">        :return: 返回公式</span><br><span class="hljs-string">        &#x27;&#x27;&#x27;</span><br>        dataTrajectory = []<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s:<br>            dataTrajectory.append(np.array(i))<br>        <span class="hljs-keyword">return</span> self._bztsg(dataTrajectory)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">simulation</span>(<span class="hljs-params">self, start, end, le=<span class="hljs-number">1</span>, deviation=<span class="hljs-number">0</span>, bias=<span class="hljs-number">0.5</span></span>):<br>        <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param start:开始点的坐标 如 start = [0, 0]</span><br><span class="hljs-string">        :param end:结束点的坐标 如 end = [100, 100]</span><br><span class="hljs-string">        :param le:几阶贝塞尔曲线，越大越复杂 如 le = 4</span><br><span class="hljs-string">        :param deviation:轨迹上下波动的范围 如 deviation = 10</span><br><span class="hljs-string">        :param bias:波动范围的分布位置 如 bias = 0.5</span><br><span class="hljs-string">        :return:返回一个字典equation对应该曲线的方程，P对应贝塞尔曲线的影响点</span><br><span class="hljs-string">        &#x27;&#x27;&#x27;</span><br>        start = np.array(start)<br>        end = np.array(end)<br>        cbb = []<br>        <span class="hljs-keyword">if</span> le != <span class="hljs-number">1</span>:<br>            e = (<span class="hljs-number">1</span> - bias) / (le - <span class="hljs-number">1</span>)<br>            cbb = [[bias + e * i, bias + e * (i + <span class="hljs-number">1</span>)] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(le - <span class="hljs-number">1</span>)]<br><br>        dataTrajectoryList = [start]<br><br>        t = random.choice([-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>])<br>        w = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> cbb:<br>            px1 = start[<span class="hljs-number">0</span>] + (end[<span class="hljs-number">0</span>] - start[<span class="hljs-number">0</span>]) * (random.random() * (i[<span class="hljs-number">1</span>] - i[<span class="hljs-number">0</span>]) + (i[<span class="hljs-number">0</span>]))<br>            p = np.array([px1, self._bztsg([start, end])(px1) + t * deviation])<br>            dataTrajectoryList.append(p)<br>            w += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> w &gt;= <span class="hljs-number">2</span>:<br>                w = <span class="hljs-number">0</span><br>                t = -<span class="hljs-number">1</span> * t<br><br>        dataTrajectoryList.append(end)<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;equation&quot;</span>: self._bztsg(dataTrajectoryList), <span class="hljs-string">&quot;P&quot;</span>: np.array(dataTrajectoryList)&#125;<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">trackArray</span>(<span class="hljs-params">self, start, end, numberList, le=<span class="hljs-number">2</span>, deviation=<span class="hljs-number">0</span>, bias=<span class="hljs-number">0.5</span>, <span class="hljs-built_in">type</span>=<span class="hljs-number">0</span>, cbb=<span class="hljs-number">0</span>, yhh=<span class="hljs-number">10</span></span>):<br>        <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">        :param start:开始点的坐标 如 start = [0, 0]</span><br><span class="hljs-string">        :param end:结束点的坐标 如 end = [100, 100]</span><br><span class="hljs-string">        :param numberList:返回的数组的轨迹点的数量 numberList = 150</span><br><span class="hljs-string">        :param le:几阶贝塞尔曲线，越大越复杂 如 le = 4</span><br><span class="hljs-string">        :param deviation:轨迹上下波动的范围 如 deviation = 10</span><br><span class="hljs-string">        :param bias:波动范围的分布位置 如 bias = 0.5</span><br><span class="hljs-string">        :param type:0表示均速滑动，1表示先慢后快，2表示先快后慢，3表示先慢中间快后慢 如 type = 1</span><br><span class="hljs-string">        :param cbb:在终点来回摆动的次数</span><br><span class="hljs-string">        :param yhh:在终点来回摆动的范围</span><br><span class="hljs-string">        :return:返回一个字典trackArray对应轨迹数组，P对应贝塞尔曲线的影响点</span><br><span class="hljs-string">        &#x27;&#x27;&#x27;</span><br>        s = []<br>        fun = self.simulation(start, end, le, deviation, bias)<br>        w = fun[<span class="hljs-string">&#x27;P&#x27;</span>]<br>        fun = fun[<span class="hljs-string">&quot;equation&quot;</span>]<br>        <span class="hljs-keyword">if</span> cbb != <span class="hljs-number">0</span>:<br>            numberListOfcbb = <span class="hljs-built_in">round</span>(numberList * <span class="hljs-number">0.2</span> / (cbb + <span class="hljs-number">1</span>))<br>            numberList -= (numberListOfcbb * (cbb + <span class="hljs-number">1</span>))<br><br>            xTrackArray = self._<span class="hljs-built_in">type</span>(<span class="hljs-built_in">type</span>, [start[<span class="hljs-number">0</span>], end[<span class="hljs-number">0</span>]], numberList)<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> xTrackArray:<br>                s.append([i, fun(i)])<br>            dq = yhh / cbb<br>            kg = <span class="hljs-number">0</span><br>            ends = np.copy(end)<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(cbb):<br>                <span class="hljs-keyword">if</span> kg == <span class="hljs-number">0</span>:<br>                    d = np.array([end[<span class="hljs-number">0</span>] + (yhh - dq * i),<br>                                  ((end[<span class="hljs-number">1</span>] - start[<span class="hljs-number">1</span>]) / (end[<span class="hljs-number">0</span>] - start[<span class="hljs-number">0</span>])) * (end[<span class="hljs-number">0</span>] + (yhh - dq * i)) + (<br>                                          end[<span class="hljs-number">1</span>] - ((end[<span class="hljs-number">1</span>] - start[<span class="hljs-number">1</span>]) / (end[<span class="hljs-number">0</span>] - start[<span class="hljs-number">0</span>])) * end[<span class="hljs-number">0</span>])])<br>                    kg = <span class="hljs-number">1</span><br>                <span class="hljs-keyword">else</span>:<br>                    d = np.array([end[<span class="hljs-number">0</span>] - (yhh - dq * i),<br>                                  ((end[<span class="hljs-number">1</span>] - start[<span class="hljs-number">1</span>]) / (end[<span class="hljs-number">0</span>] - start[<span class="hljs-number">0</span>])) * (end[<span class="hljs-number">0</span>] - (yhh - dq * i)) + (<br>                                          end[<span class="hljs-number">1</span>] - ((end[<span class="hljs-number">1</span>] - start[<span class="hljs-number">1</span>]) / (end[<span class="hljs-number">0</span>] - start[<span class="hljs-number">0</span>])) * end[<span class="hljs-number">0</span>])])<br>                    kg = <span class="hljs-number">0</span><br>                <span class="hljs-built_in">print</span>(d)<br>                y = self.trackArray(ends, d, numberListOfcbb, le=<span class="hljs-number">2</span>, deviation=<span class="hljs-number">0</span>, bias=<span class="hljs-number">0.5</span>, <span class="hljs-built_in">type</span>=<span class="hljs-number">0</span>, cbb=<span class="hljs-number">0</span>, yhh=<span class="hljs-number">10</span>)<br>                s += <span class="hljs-built_in">list</span>(y[<span class="hljs-string">&#x27;trackArray&#x27;</span>])<br>                ends = d<br>            y = self.trackArray(ends, end, numberListOfcbb, le=<span class="hljs-number">2</span>, deviation=<span class="hljs-number">0</span>, bias=<span class="hljs-number">0.5</span>, <span class="hljs-built_in">type</span>=<span class="hljs-number">0</span>, cbb=<span class="hljs-number">0</span>, yhh=<span class="hljs-number">10</span>)<br>            s += <span class="hljs-built_in">list</span>(y[<span class="hljs-string">&#x27;trackArray&#x27;</span>])<br><br>        <span class="hljs-keyword">else</span>:<br>            xTrackArray = self._<span class="hljs-built_in">type</span>(<span class="hljs-built_in">type</span>, [start[<span class="hljs-number">0</span>], end[<span class="hljs-number">0</span>]], numberList)<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> xTrackArray:<br>                s.append([i, fun(i)])<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;trackArray&quot;</span>: np.array(s), <span class="hljs-string">&quot;P&quot;</span>: w&#125;<br><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/2833844911/gurs">参考链接</a></p>
+<h3 id="3-随机生成"><a href="#3-随机生成" class="headerlink" title="3. 随机生成"></a>3. 随机生成</h3><p>适用平台:</p>
+<pre><code class="hljs">-某音PC
+-某书PC
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_random_sliding_track</span>(<span class="hljs-params">distance, tip_y</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    随机生成滑动轨迹二维数组</span><br><span class="hljs-string">    :param distance: 距离</span><br><span class="hljs-string">    :param tip_y: 接口中 y参数</span><br><span class="hljs-string">    :return:</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    all_array = []<br>    time_random = <span class="hljs-built_in">int</span>(random.uniform(<span class="hljs-number">8</span>, <span class="hljs-number">15</span>))<br>    x_random = <span class="hljs-built_in">int</span>(random.uniform(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>))<br>    start_time = <span class="hljs-built_in">int</span>(random.uniform(<span class="hljs-number">10</span>, <span class="hljs-number">15</span>))<br>    start_x = <span class="hljs-number">1</span><br>    start_array = [start_x, tip_y, start_time]<br>    <span class="hljs-comment"># 生成的长度</span><br>    <span class="hljs-comment"># arr_length = math.ceil(distance / 4) - 1</span><br>    all_array.append(start_array)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(distance):<br>        sec_x = start_x + x_random<br>        sec_time = start_time + time_random<br>        <span class="hljs-keyword">if</span> sec_x &gt; distance:<br>            <span class="hljs-keyword">break</span><br>        all_array.append([sec_x, tip_y, sec_time])<br>        start_x = sec_x<br>        start_time = sec_time<br>    <span class="hljs-comment"># 检查最后一位是否等于distance</span><br>    last_array = all_array[-<span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">if</span> last_array[<span class="hljs-number">0</span>] != distance:<br>        all_array.append(<br>            [distance, tip_y, last_array[<span class="hljs-number">2</span>] + time_random]<br>        )<br>    <span class="hljs-comment"># 暂停成功率高</span><br>    <span class="hljs-comment"># time.sleep(last_array[-1] / 1000)</span><br>    <span class="hljs-keyword">return</span> all_array<br><br></code></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/JS%E9%80%86%E5%90%91/" class="category-chain-item">JS逆向</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/JS%E9%80%86%E5%90%91/%E8%BD%A8%E8%BF%B9%E7%94%9F%E6%88%90/" class="category-chain-item">轨迹生成</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>鼠标轨迹生成</div>
+      <div>https://sign-cc.github.io/posts/79e14e4c/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SignCc</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/fcc217f6/" title="滑块缺口图片距离识别">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">滑块缺口图片距离识别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/110c381a/" title="AST-去除控制流平坦化">
+                        <span class="hidden-mobile">AST-去除控制流平坦化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","appKey":"VF6l5XVkCCe4IDy6xqkhusUe","path":"window.location.pathname","placeholder":"说点什么吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

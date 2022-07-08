@@ -19,7 +19,7 @@
     <meta name="description" content="Linux 基本命令1. 关键词查询1grep &quot;关键词&quot; 文件名称 |wc -l 2. 查看进程1ps -aux | grep &#96;python3&#96; 2. 后台挂起启动python命令1nohup python3 text.py &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp; 3. 解压 &#x2F; 压缩123456zip:    zip –r test.zip te">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基本命令">
-<meta property="og:url" content="https://sign226.github.io/posts/4b6ea061/index.html">
+<meta property="og:url" content="https://sign-cc.github.io/posts/4b6ea061/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="Linux 基本命令1. 关键词查询1grep &quot;关键词&quot; 文件名称 |wc -l 2. 查看进程1ps -aux | grep &#96;python3&#96; 2. 后台挂起启动python命令1nohup python3 text.py &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp; 3. 解压 &#x2F; 压缩123456zip:    zip –r test.zip te">
 <meta property="og:locale" content="zh_CN">
@@ -69,7 +69,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"sign226.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","app_key":"VF6l5XVkCCe4IDy6xqkhusUe","server_url":"https://0yd4gwf8.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"sign-cc.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0yD4GWf8McwI7loLAiOtm73W-gzGzoHsz","app_key":"VF6l5XVkCCe4IDy6xqkhusUe","server_url":"https://0yd4gwf8.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -291,7 +291,7 @@
 <h3 id="5-查看日志"><a href="#5-查看日志" class="headerlink" title="5. 查看日志"></a>5. 查看日志</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs commandline">tail -f /data/.../***.log<br>```          <br><br>### 6. 查看网络状况<br>```commandline<br>netstat -apn // 查看所有端口<br>an //按一定顺序排列输出<br>p //表示显示哪个进程在调用<br></code></pre></td></tr></table></figure>
 <h3 id="7-上传-下载"><a href="#7-上传-下载" class="headerlink" title="7. 上传 下载"></a>7. 上传 下载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">rz // 上传<br>sz // 下载<br></code></pre></td></tr></table></figure>
 
-<h2 id="8-防火墙"><a href="#8-防火墙" class="headerlink" title="8. 防火墙"></a>8. 防火墙</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">service iptables start // 开启防火墙<br>service iptables stop // 关闭防火墙<br><br>chkconfig iptables on // 永久开启<br>chkconfig iptables off // 永久关闭<br></code></pre></td></tr></table></figure>
+<h2 id="8-防火墙"><a href="#8-防火墙" class="headerlink" title="8. 防火墙"></a>8. 防火墙</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">service iptables start // 开启防火墙<br>service iptables stop // 关闭防火墙<br><br>chkconfig iptables on // 永久开启<br>chkconfig iptables off // 永久关闭<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
               </div>
             
@@ -337,7 +337,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Linux基本命令</div>
-      <div>https://sign226.github.io/posts/4b6ea061/</div>
+      <div>https://sign-cc.github.io/posts/4b6ea061/</div>
     </div>
     <div class="license-meta">
       

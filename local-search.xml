@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>滑块类破解思路</title>
+    <link href="/posts/56fff324/"/>
+    <url>/posts/56fff324/</url>
+    
+    <content type="html"><![CDATA[<h2 id="缺口类滑块破解思路"><a href="#缺口类滑块破解思路" class="headerlink" title="缺口类滑块破解思路"></a>缺口类滑块破解思路</h2><ul><li>加密参数破解</li><li>图片保存本地(是否压缩大小, 需要跟HTML页面上大小一致)</li><li>识别缺口距离</li><li>轨迹生成(需要与平台轨迹加密格式一致)</li><li>校验</li></ul><h2 id="无感验证类破解思路"><a href="#无感验证类破解思路" class="headerlink" title="无感验证类破解思路"></a>无感验证类破解思路</h2><h3 id="google-reCAPTCHA-V2-v3-TikTok-…"><a href="#google-reCAPTCHA-V2-v3-TikTok-…" class="headerlink" title="google reCAPTCHA V2/v3 , TikTok …"></a>google reCAPTCHA V2/v3 , TikTok …</h3><p><a href="https://2captcha.com/2captcha-api#rates">点我</a></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+      <category>爬虫</category>
+      
+      <category>JS逆向</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>各类加密算法</title>
     <link href="/posts/8f91ec68/"/>
     <url>/posts/8f91ec68/</url>
@@ -212,7 +235,7 @@
   
   
   <entry>
-    <title>AST-去除控制流平坦化</title>
+    <title>去除控制流平坦化</title>
     <link href="/posts/110c381a/"/>
     <url>/posts/110c381a/</url>
     

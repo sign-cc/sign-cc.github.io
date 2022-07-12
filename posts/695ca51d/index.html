@@ -18,24 +18,21 @@
   <meta name="author" content="SignCc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. Python基础2. requests库使用3. Chrome抓包详解4. Fiddler抓包详解5. 一键复制chrome包,转为Python代码 curlconverter">
+    <meta name="description" content="针对TLS的对抗方法一：1.https:&#x2F;&#x2F;github.com&#x2F;synodriver&#x2F;pycurl&#x2F;blob&#x2F;master&#x2F;special.markdown2.git clone https:&#x2F;&#x2F;github.com&#x2F;ycq0125&#x2F;pycurl.git3.cd pycurl搞定。可以把.&#x2F;pycurl&#x2F;requests_curl 整个移动到site-package目录下，就可以全局使用了 方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫-基础">
-<meta property="og:url" content="https://sign-cc.github.io/posts/6b0f3821/index.html">
+<meta property="og:title" content="爬虫-TLS对抗">
+<meta property="og:url" content="https://sign-cc.github.io/posts/695ca51d/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="1. Python基础2. requests库使用3. Chrome抓包详解4. Fiddler抓包详解5. 一键复制chrome包,转为Python代码 curlconverter">
+<meta property="og:description" content="针对TLS的对抗方法一：1.https:&#x2F;&#x2F;github.com&#x2F;synodriver&#x2F;pycurl&#x2F;blob&#x2F;master&#x2F;special.markdown2.git clone https:&#x2F;&#x2F;github.com&#x2F;ycq0125&#x2F;pycurl.git3.cd pycurl搞定。可以把.&#x2F;pycurl&#x2F;requests_curl 整个移动到site-package目录下，就可以全局使用了 方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sign-cc.github.io/posts/6b0f3821/img_1.png">
-<meta property="og:image" content="https://sign-cc.github.io/posts/6b0f3821/img.png">
-<meta property="article:published_time" content="2022-07-11T07:20:33.000Z">
-<meta property="article:modified_time" content="2022-07-11T08:29:18.421Z">
+<meta property="article:published_time" content="2022-07-12T03:11:44.000Z">
+<meta property="article:modified_time" content="2022-07-12T06:46:36.359Z">
 <meta property="article:author" content="SignCc">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://sign-cc.github.io/posts/6b0f3821/img_1.png">
   
   
   
-  <title>爬虫-基础 - </title>
+  <title>爬虫-TLS对抗 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="爬虫-基础"></span>
+            <span id="subtitle" data-typed-text="爬虫-TLS对抗"></span>
           
         </div>
 
@@ -211,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-11 15:20" pubdate>
-          2022年7月11日 下午
+        <time datetime="2022-07-12 11:11" pubdate>
+          2022年7月12日 上午
         </time>
       </span>
     
@@ -223,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          85 字
+          501 字
         
       </span>
     
@@ -234,7 +231,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -280,12 +277,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">爬虫-基础</h1>
+            <h1 style="display: none">爬虫-TLS对抗</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="1-Python基础"><a href="#1-Python基础" class="headerlink" title="1. Python基础"></a>1. <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400">Python基础</a></h3><h3 id="2-requests库使用"><a href="#2-requests库使用" class="headerlink" title="2. requests库使用"></a>2. <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1183249464292448">requests库使用</a></h3><h3 id="3-Chrome抓包详解"><a href="#3-Chrome抓包详解" class="headerlink" title="3. Chrome抓包详解"></a>3. <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32825491">Chrome抓包详解</a></h3><h3 id="4-Fiddler抓包详解"><a href="#4-Fiddler抓包详解" class="headerlink" title="4. Fiddler抓包详解"></a>4. <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904042422861831">Fiddler抓包详解</a></h3><h3 id="5-一键复制chrome包-转为Python代码-curlconverter"><a href="#5-一键复制chrome包-转为Python代码-curlconverter" class="headerlink" title="5. 一键复制chrome包,转为Python代码 curlconverter"></a>5. 一键复制chrome包,转为Python代码 <a target="_blank" rel="noopener" href="https://curlconverter.com/">curlconverter</a></h3><p><img src="img_1.png" srcset="/img/loading.gif" lazyload alt="复制curl-bash"><br><img src="img.png" srcset="/img/loading.gif" lazyload alt="粘贴至curlconverter"></p>
+                <h2 id="针对TLS的对抗"><a href="#针对TLS的对抗" class="headerlink" title="针对TLS的对抗"></a>针对TLS的对抗</h2><p>方法一：<br>1.<a target="_blank" rel="noopener" href="https://github.com/synodriver/pycurl/blob/master/special.markdown">https://github.com/synodriver/pycurl/blob/master/special.markdown</a><br>2.git clone <a target="_blank" rel="noopener" href="https://github.com/ycq0125/pycurl.git">https://github.com/ycq0125/pycurl.git</a><br>3.cd pycurl搞定。可以把./pycurl/requests_curl 整个移动到site-package目录下，就可以全局使用了</p>
+<p>方法二：<br><a target="_blank" rel="noopener" href="https://pypi.org/project/requests-curl-antitls/">https://pypi.org/project/requests-curl-antitls/</a> 内有详细步骤</p>
+<p>方法三：<br>镜像有点大，不过有完整的编译环境<br>docker pull geekbyte1/pyantitls:v1.0<br>docker run -it -d geekbyte1/pyantitls:v1.0</p>
+<p>方法四：<br>Q佬的Dockerfile版<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UZlLuzlQZrI7w82HI7zGuw">https://mp.weixin.qq.com/s/UZlLuzlQZrI7w82HI7zGuw</a></p>
+<p>另外下面这个是vmwear的镜像，已经编译好的环境，可以自己拿来玩玩<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1_R02JKqvmA8Km4QNAKYfYg">https://pan.baidu.com/s/1_R02JKqvmA8Km4QNAKYfYg</a><br>提取码：curl</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
               </div>
@@ -314,7 +315,7 @@
   
     <span>></span>
     
-  <a href="/categories/Python/%E7%88%AC%E8%99%AB/%E5%9F%BA%E7%A1%80/" class="category-chain-item">基础</a>
+  <a href="/categories/Python/%E7%88%AC%E8%99%AB/JS%E9%80%86%E5%90%91/" class="category-chain-item">JS逆向</a>
   
   
 
@@ -338,8 +339,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>爬虫-基础</div>
-      <div>https://sign-cc.github.io/posts/6b0f3821/</div>
+      <div>爬虫-TLS对抗</div>
+      <div>https://sign-cc.github.io/posts/695ca51d/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +352,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月11日</div>
+          <div>2022年7月12日</div>
         </div>
       
       
@@ -381,9 +382,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/695ca51d/" title="爬虫-TLS对抗">
+                      <a href="/posts/e10359bf/" title="某书PC加密算法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">爬虫-TLS对抗</span>
+                        <span class="hidden-mobile">某书PC加密算法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -391,8 +392,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8c44cadd/" title="某音PC加密算法">
-                        <span class="hidden-mobile">某音PC加密算法</span>
+                      <a href="/posts/6b0f3821/" title="爬虫-基础">
+                        <span class="hidden-mobile">爬虫-基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -18,15 +18,15 @@
   <meta name="author" content="SignCc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="针对TLS的对抗方法一：1.https:&#x2F;&#x2F;github.com&#x2F;synodriver&#x2F;pycurl&#x2F;blob&#x2F;master&#x2F;special.markdown2.git clone https:&#x2F;&#x2F;github.com&#x2F;ycq0125&#x2F;pycurl.git3.cd pycurl搞定。可以把.&#x2F;pycurl&#x2F;requests_curl 整个移动到site-package目录下，就可以全局使用了 方法">
+    <meta name="description" content="针对TLS的对抗方法一：1.https:&#x2F;&#x2F;github.com&#x2F;synodriver&#x2F;pycurl&#x2F;blob&#x2F;master&#x2F;special.markdown 2.git clone https:&#x2F;&#x2F;github.com&#x2F;ycq0125&#x2F;pycurl.git 3.cd pycurl搞定。可以把.&#x2F;pycurl&#x2F;requests_curl 整个移动到site-package目录下，就可以全局使用了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫-TLS对抗">
 <meta property="og:url" content="https://sign-cc.github.io/posts/695ca51d/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="针对TLS的对抗方法一：1.https:&#x2F;&#x2F;github.com&#x2F;synodriver&#x2F;pycurl&#x2F;blob&#x2F;master&#x2F;special.markdown2.git clone https:&#x2F;&#x2F;github.com&#x2F;ycq0125&#x2F;pycurl.git3.cd pycurl搞定。可以把.&#x2F;pycurl&#x2F;requests_curl 整个移动到site-package目录下，就可以全局使用了 方法">
+<meta property="og:description" content="针对TLS的对抗方法一：1.https:&#x2F;&#x2F;github.com&#x2F;synodriver&#x2F;pycurl&#x2F;blob&#x2F;master&#x2F;special.markdown 2.git clone https:&#x2F;&#x2F;github.com&#x2F;ycq0125&#x2F;pycurl.git 3.cd pycurl搞定。可以把.&#x2F;pycurl&#x2F;requests_curl 整个移动到site-package目录下，就可以全局使用了">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-12T03:11:44.000Z">
-<meta property="article:modified_time" content="2022-07-12T06:46:36.359Z">
+<meta property="article:modified_time" content="2022-07-13T06:29:53.024Z">
 <meta property="article:author" content="SignCc">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          501 字
+          2k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          5 分钟
+          18 分钟
         
       </span>
     
@@ -282,10 +282,15 @@
             
               <div class="markdown-body">
                 
-                <h2 id="针对TLS的对抗"><a href="#针对TLS的对抗" class="headerlink" title="针对TLS的对抗"></a>针对TLS的对抗</h2><p>方法一：<br>1.<a target="_blank" rel="noopener" href="https://github.com/synodriver/pycurl/blob/master/special.markdown">https://github.com/synodriver/pycurl/blob/master/special.markdown</a><br>2.git clone <a target="_blank" rel="noopener" href="https://github.com/ycq0125/pycurl.git">https://github.com/ycq0125/pycurl.git</a><br>3.cd pycurl搞定。可以把./pycurl/requests_curl 整个移动到site-package目录下，就可以全局使用了</p>
+                <h2 id="针对TLS的对抗"><a href="#针对TLS的对抗" class="headerlink" title="针对TLS的对抗"></a>针对TLS的对抗</h2><p>方法一：<br>1.<a target="_blank" rel="noopener" href="https://github.com/synodriver/pycurl/blob/master/special.markdown">https://github.com/synodriver/pycurl/blob/master/special.markdown</a></p>
+<p>2.git clone <a target="_blank" rel="noopener" href="https://github.com/ycq0125/pycurl.git">https://github.com/ycq0125/pycurl.git</a></p>
+<p>3.cd pycurl搞定。可以把./pycurl/requests_curl 整个移动到site-package目录下，就可以全局使用了</p>
 <p>方法二：<br><a target="_blank" rel="noopener" href="https://pypi.org/project/requests-curl-antitls/">https://pypi.org/project/requests-curl-antitls/</a> 内有详细步骤</p>
 <p>方法三：<br>镜像有点大，不过有完整的编译环境<br>docker pull geekbyte1/pyantitls:v1.0<br>docker run -it -d geekbyte1/pyantitls:v1.0</p>
 <p>方法四：<br>Q佬的Dockerfile版<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UZlLuzlQZrI7w82HI7zGuw">https://mp.weixin.qq.com/s/UZlLuzlQZrI7w82HI7zGuw</a></p>
+<p>方法五：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><br><span class="hljs-keyword">from</span> requests.adapters <span class="hljs-keyword">import</span> HTTPAdapter<br><span class="hljs-keyword">from</span> requests.packages.urllib3.util.ssl_ <span class="hljs-keyword">import</span> create_urllib3_context<br><br>ORIGIN_CIPHERS = (<span class="hljs-string">&#x27;ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+HIGH:&#x27;</span><br>                  <span class="hljs-string">&#x27;DH+HIGH:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+HIGH:RSA+3DES&#x27;</span>)<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">DESAdapter</span>(<span class="hljs-title class_ inherited__">HTTPAdapter</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, *args, **kwargs</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        A TransportAdapter that re-enables 3DES support in Requests.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        CIPHERS = ORIGIN_CIPHERS.split(<span class="hljs-string">&#x27;:&#x27;</span>)<br>        random.shuffle(CIPHERS)<br>        CIPHERS = <span class="hljs-string">&#x27;:&#x27;</span>.join(CIPHERS)<br>        self.CIPHERS = CIPHERS + <span class="hljs-string">&#x27;:!aNULL:!eNULL:!MD5&#x27;</span><br>        <span class="hljs-built_in">super</span>().__init__(*args, **kwargs)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">init_poolmanager</span>(<span class="hljs-params">self, *args, **kwargs</span>):<br>        context = create_urllib3_context(ciphers=self.CIPHERS)<br>        kwargs[<span class="hljs-string">&#x27;ssl_context&#x27;</span>] = context<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>(DESAdapter, self).init_poolmanager(*args, **kwargs)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">proxy_manager_for</span>(<span class="hljs-params">self, *args, **kwargs</span>):<br>        context = create_urllib3_context(ciphers=self.CIPHERS)<br>        kwargs[<span class="hljs-string">&#x27;ssl_context&#x27;</span>] = context<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>(DESAdapter, self).proxy_manager_for(*args, **kwargs)<br><br><br><span class="hljs-keyword">import</span> requests<br><br>headers = &#123;<br>    <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36&#x27;</span>&#125;<br>s = requests.Session()<br>s.headers.update(headers)<br><br><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    s.mount(<span class="hljs-string">&#x27;https://ja3er.com&#x27;</span>, DESAdapter())<br>    resp = s.get(<span class="hljs-string">&#x27;https://ja3er.com/json&#x27;</span>).json()<br>    <span class="hljs-built_in">print</span>(resp)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">ja3_test</span>(<span class="hljs-params">session</span>):<br>    resp = session.get(<span class="hljs-string">&#x27;https://ja3er.com/json&#x27;</span>).json()<br>    <span class="hljs-keyword">return</span> resp<br><br><br></code></pre></td></tr></table></figure>
+
 <p>另外下面这个是vmwear的镜像，已经编译好的环境，可以自己拿来玩玩<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1_R02JKqvmA8Km4QNAKYfYg">https://pan.baidu.com/s/1_R02JKqvmA8Km4QNAKYfYg</a><br>提取码：curl</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 

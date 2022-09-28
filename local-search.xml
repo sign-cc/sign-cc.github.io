@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Android查看签名信息</title>
+    <link href="/posts/f43100dc/"/>
+    <url>/posts/f43100dc/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Android查看签名信息"><a href="#Android查看签名信息" class="headerlink" title="Android查看签名信息"></a>Android查看签名信息</h2><h3 id="AS开发配置签名debug-release使用同一签名"><a href="#AS开发配置签名debug-release使用同一签名" class="headerlink" title="AS开发配置签名debug/release使用同一签名"></a>AS开发配置签名debug/release使用同一签名</h3><h4 id="build-gradle-app中配置"><a href="#build-gradle-app中配置" class="headerlink" title="build.gradle app中配置"></a>build.gradle app中配置</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>配置keystore签名<br>    signingConfigs &#123;<br>        release &#123;<br>            <span class="hljs-regexp">//</span>签名文件的路径<br>            storeFile file(<span class="hljs-string">&quot;/a/b/xxx.jks&quot;</span>)<br>            <span class="hljs-regexp">//</span>Keystore password<br>            storePassword <span class="hljs-string">&quot;pwd&quot;</span><br>            <span class="hljs-regexp">//</span>Key alias<br>            keyAlias <span class="hljs-string">&quot;alias&quot;</span><br>            <span class="hljs-regexp">//</span>Key Password<br>            keyPassword <span class="hljs-string">&quot;pwd&quot;</span><br>        &#125;<br>    &#125;<br>    buildTypes &#123;<br>        debug &#123;<br>            signingConfig signingConfigs.release<br>        &#125;<br>        release &#123;<br>            signingConfig signingConfigs.release<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure><h3 id="查看证书签名sha1"><a href="#查看证书签名sha1" class="headerlink" title="查看证书签名sha1"></a>查看证书签名sha1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">keytool -list -v -keystore XXX.jks<br></code></pre></td></tr></table></figure><p><img src="img.png"></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <categories>
+      
+      <category>Android</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Unidbg补环境问题</title>
     <link href="/posts/3af15ef1/"/>
     <url>/posts/3af15ef1/</url>

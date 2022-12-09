@@ -4,6 +4,87 @@
   
   
   <entry>
+    <title>Frida简介</title>
+    <link href="/posts/d4d9005b/"/>
+    <url>/posts/d4d9005b/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1、What-is-frida"><a href="#1、What-is-frida" class="headerlink" title="1、What is frida"></a>1、<a href="https://frida.re/news/">What is frida</a></h3><p>frida是平台原生app的Greasemonkey<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="Greasemonke: firefox的一套插件体系，使用它编写的脚本可以直接改变firefox对网页的编排方式，实现想要的任何功能.">[1]</span></a></sup>，说的专业一点，就是一种动态插桩工具，可以插入一些代码到原生app的内存空间去,动态地监视和修改其行为，这些原生平台可以是Win、Mac、Linux、Android或者iOS。俗称”外挂”😯</p><h3 id="2、What-can-frida-do"><a href="#2、What-can-frida-do" class="headerlink" title="2、What can frida do"></a>2、What can frida do</h3><p>动静态修改内存实现作弊一直是刚需，比如: 金山游侠<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="金山游侠: 金山软件公司出品的游戏修改工具。">[2]</span></a></sup>, CheatEngine<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="CheatEngine: 一般简称CE，是一个开放源代码的软件，功能包括：内存扫描、十六进制编辑器、调试工具，供Windows和Mac操作系统运行。">[3]</span></a></sup>, 本质上frida做的跟它是一件事情。原则上是可以用frida把金山游侠，CheatEngine包括等“外挂”做出来的。<br>当然，现在已经不是直接修改内存就可以高枕无忧的年代了。大家也不要这样做，做外挂可是违法行为。<br>在逆向的工作上也是一样的道理，使用frida可以“看到”平时看不到的东西。出于编译型语言的特性，机器码在CPU和内存上执行的过程中，其内部数据的交互和跳转，对用户来讲是看不见的。当然如果手上有源码，甚至哪怕有带调试符号的可执行文件包，也可以使用gbd<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="[gdb官网](https://www.sourceware.org/gdb/)">[4]</span></a></sup>、lldb<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="[lldb官网](https://lldb.llvm.org/)">[5]</span></a></sup>等调试器连上去看。<br>那如果没有呢？如果是纯黑盒呢？又要对app进行逆向和动态调试、甚至自动化分析以及规模化收集信息的话，我们需要的是细粒度的流程控制和代码级的可定制体系，以及不断对调试进行动态纠正和可编程调试的框架，这就是frida。<br>frida使用的是python、JavaScript等“胶水语言”也是它火爆的一个原因，可以迅速将逆向过程自动化，以及整合到现有的架构和体系中去，为发布“威胁情报”、“数据平台”甚至“AI风控”等产品打好基础。</p><h3 id="注脚"><a href="#注脚" class="headerlink" title="注脚"></a>注脚</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>Greasemonke: firefox的一套插件体系，使用它编写的脚本可以直接改变firefox对网页的编排方式，实现想要的任何功能.<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>金山游侠: 金山软件公司出品的游戏修改工具。<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>CheatEngine: 一般简称CE，是一个开放源代码的软件，功能包括：内存扫描、十六进制编辑器、调试工具，供Windows和Mac操作系统运行。<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a href="https://www.sourceware.org/gdb/">gdb官网</a><a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a href="https://lldb.llvm.org/">lldb官网</a><a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hook框架</category>
+      
+      <category>Frida</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Frida</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hook简介</title>
+    <link href="/posts/97f8220e/"/>
+    <url>/posts/97f8220e/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1、什么是Hook"><a href="#1、什么是Hook" class="headerlink" title="1、什么是Hook"></a>1、什么是Hook</h3><p>Hook是<em><strong>钩子</strong></em>的意思，在Android 操作系统中系统维护着自己的一套事件分发机制。应用程序，包括应用触发事件和后台逻辑处理，也是根据事件流程一步步地向下执行。而<strong>钩子</strong>的意思，就是在事件传送到终点前截获井监控事件的传输，像个钩子钩上事件一样，并且能够在钩上事件时，处理一些自己特定的事件。较为形象的流程如下图所示。<br><img src="img.png" alt="Hook原理图"></p><h3 id="2、Hook原理"><a href="#2、Hook原理" class="headerlink" title="2、Hook原理"></a>2、Hook原理</h3><p>Hook技术无论对安全软件还是恶意软件都是十分关键的一项技术，其本质就是<strong>劫持函数调用</strong>。但是由于处于Linux 用户态，每个进程都有自己独立的进程空间，所以必须先注入到所要Hook 的进程空间，修改其<em><strong>内存</strong></em>中的进程代码，替换其过程表的符号地址。在Android 中一般是通过<em><strong>ptrace函数</strong></em>附加进程，然后向远程进程注人so 库，从而达到监控以及远程进程关键函数挂钩。</p><h3 id="3、Hook工作流程"><a href="#3、Hook工作流程" class="headerlink" title="3、Hook工作流程"></a>3、Hook工作流程</h3><p>Hook 的原理就是改变目标函数的指向，原理看起来并不复杂，但是实现起来却不是那么的简单。<br>这里我们将问题细分为两个</p><p>如何注入代码？</p><pre><code class="hljs">需要注入的代码我们存放在哪里？如何注入代码？</code></pre><p>如何注人动态链接库？</p><pre><code class="hljs">我们不能只在自己的进程载入动态链接库，如何使进程附着上目标进程？如何让目标进程调用我们的动态链接库函数？</code></pre><p>对于进程附着， Android 的内核中有一个函数叫ptrace，它能够动态地attach （跟踪一个目标进程）、detach （结束跟踪一个目标进程）、peektext （获取内存字节）、poketext （向内存写入地址）等，它能够满足我们的需求。而Android 中的另一个内核函数dlopen ，能够以指定模式打开指定的动态链接库文件。对于程序的指向流程，我们可以调用ptrace 让PC 指向LR 堆找。 最后调用，对目标进程调用diopen 则能够将我们希望注入的动态库注入至目标进程中。</p><p>对于代码的注入（ Hook API ），我们可以使用mmap 函数分配一段临时的内存来完成代码的存放。</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">对于目标进程中的mmap 函数地址的寻找与Hook API 函数地址的寻找都需要通过目标进程的虚拟地址空间解析与ELF 文件解析来完成，具体算法如下。<br>    通过读取/proc/&lt;PID&gt;/maps 文件找到链接库的基地址。<br>    读取动态库．解析ELF 文件，找到符号（需要对ELF 文件格式的深入理解）。<br>    计算目标函数的绝对地址。<br></code></pre></td></tr></table></figure><p><strong>目标进程函数绝对地址＝函数地址+动态库基地址(偏移地址)</strong><br>向目标进程中注入代码总结后的步骤分为以下几步。</p><pre><code class="hljs">( 1 ）用ptrace 函数attach 上目标进程。( 2 ）发现装载共享库so 函数。( 3 ）装载指定的 .so。( 4 ）让目标进程的执行流程跳转到注入的代码执行。( 5 ）使用ptrace 函数的detach 释放目标进程。</code></pre><h3 id="4、Hook-种类"><a href="#4、Hook-种类" class="headerlink" title="4、Hook 种类"></a>4、Hook 种类</h3><p>Hook ，也就是平时我们所说的函数挂钩、函数注入、函数劫持等操作。</p><p>针对Android 操作系统，根据API Hook 对应API 不一样我们可以分为</p><pre><code class="hljs">使用Android SDK 开发环境的Java API Hook使用Android NDK 开发环境的Native API Hook 。</code></pre><p>对于Android 中so 库文件的函数Hook ，根据ELF 文件的特性能分为</p><pre><code class="hljs">Got 表HookSym 表Hookinline Hook 等。</code></pre><p>根据Hook 方式的应用范围我们在Android这样一个特殊的环境中还能分别出</p><pre><code class="hljs">全局Hook单个应用程序Hook。</code></pre><p>对于Hook 程序的运行环境不同，还可以分为</p><pre><code class="hljs">用户级API Hook用户级APIHook 主要是针对在操作系统上为用户所提供的API 函数方法进行重定向修改内核级API Hook内核级API Hook 则是针对Android 内核Linux 系统提供的内核驱动模式造成的函数重定向，多数是应用在Rootkit 中。</code></pre><h3 id="5、Java-层API-Hook"><a href="#5、Java-层API-Hook" class="headerlink" title="5、Java 层API Hook"></a>5、Java 层API Hook</h3><p>通过对Android 平台的虚拟机注入与Java 反射的方式，来改变Android 虚拟机调用函数的方式（ClassLoader），从而达到Java 函数重定向的目的。这里我们将此类操作称为Java API Hook。</p><pre><code class="hljs">注意：因为是根据Java 中的反射机制来重定向函数的，那么很多Java 中反射出现的问题也会在此出现，如无法反射调用关键字为native 的方法函数（开q 实现的函数），基本类型的静态常量无法反射修改等。</code></pre><h3 id="6、Native-层So-库Hook"><a href="#6、Native-层So-库Hook" class="headerlink" title="6、Native 层So 库Hook"></a>6、Native 层So 库Hook</h3><p>主要是针对使用NDK开发出来的so 库文件的函数重定向，其中也包括对Android 操作系统底层的Linux 函数重定向，如使用so 库文件（ ELF 格式文件）中的全局偏移表GOT 表或符号表SYM 表进行修改从而达到的函数重定向，我们有可以对其称为GOT Hook 和SYM Hook。针对其中的inline 函数（内联函数）的Hook 称为inline Hook。</p><p><a href="https://www.kancloud.cn/alex_wsc/android/506821">参考链接</a></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hook框架</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hook框架</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Frida常用命令</title>
+    <link href="/posts/d1375a5/"/>
+    <url>/posts/d1375a5/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-查看进程列表-USB设备"><a href="#1-查看进程列表-USB设备" class="headerlink" title="1. 查看进程列表(USB设备)"></a>1. 查看进程列表(USB设备)</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida-ps -U<br></code></pre></td></tr></table></figure><h2 id="2-启动App"><a href="#2-启动App" class="headerlink" title="2. 启动App"></a>2. 启动App</h2><ul><li>spawn<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="spawn: 重新启动app并开始hook">[1]</span></a></sup>模式启动</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida -U -f com.xxx.xxx -l hook.js<br></code></pre></td></tr></table></figure><ul><li>attach<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="attach: 附加当前app并开始hook">[2]</span></a></sup>模式启动<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida -U com.xxx.xxx -p 111 -l hook.js<br></code></pre></td></tr></table></figure></li></ul><p>-U USB 设备<br>-f spawn 模式启动<br>-l js hook脚本<br>-p app进程ID</p><h2 id="2-端口转发"><a href="#2-端口转发" class="headerlink" title="2. 端口转发"></a>2. 端口转发</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb forward tcp:27042 tcp:27042 // 默认端口<br></code></pre></td></tr></table></figure><h3 id="注脚"><a href="#注脚" class="headerlink" title="注脚"></a>注脚</h3><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>spawn: 重新启动app并开始hook<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>attach: 附加当前app并开始hook<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hook框架</category>
+      
+      <category>Frida</category>
+      
+      <category>基础</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Frida</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android查看签名信息</title>
     <link href="/posts/f43100dc/"/>
     <url>/posts/f43100dc/</url>
@@ -997,7 +1078,7 @@
   
   
   <entry>
-    <title>FridaHook</title>
+    <title>Art/ArtMethod/RegisterNative</title>
     <link href="/posts/a9c3d13e/"/>
     <url>/posts/a9c3d13e/</url>
     
@@ -1006,7 +1087,11 @@
     
     <categories>
       
+      <category>Hook框架</category>
+      
       <category>Frida</category>
+      
+      <category>Hook脚本</category>
       
     </categories>
     
@@ -1022,16 +1107,20 @@
   
   
   <entry>
-    <title>Frida基本命令</title>
+    <title>Frida安装</title>
     <link href="/posts/96901429/"/>
     <url>/posts/96901429/</url>
     
-    <content type="html"><![CDATA[<h1 id="Frida基本命令"><a href="#Frida基本命令" class="headerlink" title="Frida基本命令"></a>Frida基本命令</h1><h2 id="1-本地安装"><a href="#1-本地安装" class="headerlink" title="1. 本地安装"></a>1. 本地安装</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs commandline">pip install frida<br>pip install frida-tools<br>npm install frida<br></code></pre></td></tr></table></figure><p>   (注意，新版本的frida需要安装frida-tools)</p><h2 id="2-手机安装frida-安装版本和本地版本一致"><a href="#2-手机安装frida-安装版本和本地版本一致" class="headerlink" title="2. 手机安装frida(安装版本和本地版本一致)"></a>2. 手机安装frida(安装版本和本地版本一致)</h2><p>   下载对应版本<a href="https://github.com/frida/frida/releases">frida-server</a>, 类似<strong>frida-server-15.1.27-android-arm.xz</strong>, 注意手机CPU架构, 上传手机/data/local/tmp 目录, 启动服务<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell getprop ro.product.cpu.abi // 查看手机CPU架构<br>adb push ./frida-server-15.1.27-android-arm /data/local/tmp // 上传frida-server<br></code></pre></td></tr></table></figure></p><h2 id="3-启动服务"><a href="#3-启动服务" class="headerlink" title="3. 启动服务"></a>3. 启动服务</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell <br>su <br>cd /data/local/tmp<br>chmod 777 frida-server-15.1.27-android-arm<br>./frida-server-15.1.27-android-arm<br></code></pre></td></tr></table></figure><h2 id="4-端口转发"><a href="#4-端口转发" class="headerlink" title="4. 端口转发"></a>4. 端口转发</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb forward tcp:27042 tcp:27042 // 默认端口<br></code></pre></td></tr></table></figure><h2 id="5-查看进程列表"><a href="#5-查看进程列表" class="headerlink" title="5. 查看进程列表"></a>5. 查看进程列表</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida-ps -U<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <content type="html"><![CDATA[<h1 id="Frida基本命令"><a href="#Frida基本命令" class="headerlink" title="Frida基本命令"></a>Frida基本命令</h1><h2 id="1-本地安装"><a href="#1-本地安装" class="headerlink" title="1. 本地安装"></a>1. 本地安装</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs commandline">pip install frida<br>pip install frida-tools<br>npm install frida<br></code></pre></td></tr></table></figure><p>(注意，新版本的frida需要安装frida-tools)</p><h2 id="2-手机安装frida-安装版本和本地版本一致"><a href="#2-手机安装frida-安装版本和本地版本一致" class="headerlink" title="2. 手机安装frida(安装版本和本地版本一致)"></a>2. 手机安装frida(安装版本和本地版本一致)</h2><p>下载对应版本<a href="https://github.com/frida/frida/releases">frida-server</a>, 类似<strong>frida-server-15.1.27-android-arm.xz</strong>, 注意手机CPU架构, 上传手机/data/local/tmp 目录, 启动服务<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell getprop ro.product.cpu.abi // 查看手机CPU架构<br>adb push ./frida-server-15.1.27-android-arm /data/local/tmp // 上传frida-server<br></code></pre></td></tr></table></figure></p><h2 id="3-启动服务"><a href="#3-启动服务" class="headerlink" title="3. 启动服务"></a>3. 启动服务</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell <br>su <br>cd /data/local/tmp<br>chmod 777 frida-server-15.1.27-android-arm<br>./frida-server-15.1.27-android-arm<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
     
     <categories>
       
+      <category>Hook框架</category>
+      
       <category>Frida</category>
+      
+      <category>基础</category>
       
     </categories>
     

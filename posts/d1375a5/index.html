@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Signal.png">
+  <link rel="icon" href="/img/Signal.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,15 +18,15 @@
   <meta name="author" content="SignCc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 查看进程列表(USB设备) 1frida-ps -U  2. 启动App spawn[1]模式启动  1frida -U -f com.xxx.xxx -l hook.js  attach[2]模式启动1frida -U com.xxx.xxx -p 111 -l hook.js  -U USB 设备-f spawn 模式启动-l js hook脚本-p app进程ID 2. 端口转发 1a">
+    <meta name="description" content="1. 查看进程列表(USB设备) 1frida-ps -U  2. 启动App spawn[1]模式启动  1frida -U -f com.xxx.xxx -l hook.js   attach[2]模式启动  1frida -U com.xxx.xxx -p 111 -l hook.js   -U USB 设备-f spawn 模式启动-l js hook脚本-p app进程ID-o out.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Frida常用命令">
 <meta property="og:url" content="https://sign-cc.github.io/posts/d1375a5/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="1. 查看进程列表(USB设备) 1frida-ps -U  2. 启动App spawn[1]模式启动  1frida -U -f com.xxx.xxx -l hook.js  attach[2]模式启动1frida -U com.xxx.xxx -p 111 -l hook.js  -U USB 设备-f spawn 模式启动-l js hook脚本-p app进程ID 2. 端口转发 1a">
+<meta property="og:description" content="1. 查看进程列表(USB设备) 1frida-ps -U  2. 启动App spawn[1]模式启动  1frida -U -f com.xxx.xxx -l hook.js   attach[2]模式启动  1frida -U com.xxx.xxx -p 111 -l hook.js   -U USB 设备-f spawn 模式启动-l js hook脚本-p app进程ID-o out.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-09T06:45:17.000Z">
-<meta property="article:modified_time" content="2022-12-09T09:56:43.127Z">
+<meta property="article:modified_time" content="2022-12-12T07:25:17.106Z">
 <meta property="article:author" content="SignCc">
 <meta property="article:tag" content="Frida">
 <meta name="twitter:card" content="summary_large_image">
@@ -97,7 +97,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>今有大鱼名为咸</strong>
+      <strong>生于忧患,死于安乐!</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          244 字
+          258 字
         
       </span>
     
@@ -289,10 +289,14 @@
 <li>spawn<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="spawn: 重新启动app并开始hook">[1]</span></a></sup>模式启动</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida -U -f com.xxx.xxx -l hook.js<br></code></pre></td></tr></table></figure>
+
 <ul>
-<li>attach<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="attach: 附加当前app并开始hook">[2]</span></a></sup>模式启动<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida -U com.xxx.xxx -p 111 -l hook.js<br></code></pre></td></tr></table></figure></li>
+<li>attach<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="attach: 附加当前app并开始hook">[2]</span></a></sup>模式启动</li>
 </ul>
-<p>-U USB 设备<br>-f spawn 模式启动<br>-l js hook脚本<br>-p app进程ID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">frida -U com.xxx.xxx -p 111 -l hook.js<br></code></pre></td></tr></table></figure>
+
+
+<p>-U USB 设备<br>-f spawn 模式启动<br>-l js hook脚本<br>-p app进程ID<br>-o out.json/log</p>
 <h2 id="2-端口转发"><a href="#2-端口转发" class="headerlink" title="2. 端口转发"></a>2. 端口转发</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb forward tcp:27042 tcp:27042 // 默认端口<br></code></pre></td></tr></table></figure>
 
 
@@ -540,7 +544,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://sign-cc.github.io/" target="_blank" rel="nofollow noopener"><span>Sign</span></a> <i class="iconfont icon-love"></i> <a href="https://sign-cc.github.io/" target="_blank" rel="nofollow noopener"><span>Fury</span></a> 
+       <a href="https://sign-cc.github.io/" target="_blank" rel="nofollow noopener"><span>Sign</span></a> <i class="iconfont icon-love"></i> <a href="https://sign-cc.github.io/" target="_blank" rel="nofollow noopener"><span>Git</span></a> 
     </div>
   
   

@@ -18,15 +18,15 @@
   <meta name="author" content="SignCc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Frida基本命令1. 本地安装 123pip install fridapip install frida-toolsnpm install frida (注意，新版本的frida需要安装frida-tools) 2. 手机安装frida(安装版本和本地版本一致)下载对应版本frida-server, 类似frida-server-15.1.27-android-arm.xz, 注意手机CPU架">
+    <meta name="description" content="1. 本地安装pip 安装 12pip install frida pip install frida-toolsnode安装 1npm install frida  (注意，新版本的frida需要安装frida-tools) 2. 手机安装frida(🔺️安装版本和本地版本一致)下载对应版本frida-server, 类似frida-server-15.1.27-android-arm.xz,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Frida安装">
 <meta property="og:url" content="https://sign-cc.github.io/posts/96901429/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Frida基本命令1. 本地安装 123pip install fridapip install frida-toolsnpm install frida (注意，新版本的frida需要安装frida-tools) 2. 手机安装frida(安装版本和本地版本一致)下载对应版本frida-server, 类似frida-server-15.1.27-android-arm.xz, 注意手机CPU架">
+<meta property="og:description" content="1. 本地安装pip 安装 12pip install frida pip install frida-toolsnode安装 1npm install frida  (注意，新版本的frida需要安装frida-tools) 2. 手机安装frida(🔺️安装版本和本地版本一致)下载对应版本frida-server, 类似frida-server-15.1.27-android-arm.xz,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-06T07:53:27.000Z">
-<meta property="article:modified_time" content="2022-12-09T07:18:01.085Z">
+<meta property="article:modified_time" content="2022-12-16T07:36:02.738Z">
 <meta property="article:author" content="SignCc">
 <meta property="article:tag" content="Frida">
 <meta name="twitter:card" content="summary_large_image">
@@ -192,7 +192,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://tva1.sinaimg.cn/large/005Go8ujly1h46hg9sy8kj31hc0u0n02.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/pages.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -283,9 +283,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Frida基本命令"><a href="#Frida基本命令" class="headerlink" title="Frida基本命令"></a>Frida基本命令</h1><h2 id="1-本地安装"><a href="#1-本地安装" class="headerlink" title="1. 本地安装"></a>1. 本地安装</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs commandline">pip install frida<br>pip install frida-tools<br>npm install frida<br></code></pre></td></tr></table></figure>
+                <h2 id="1-本地安装"><a href="#1-本地安装" class="headerlink" title="1. 本地安装"></a>1. 本地安装</h2><p><strong>pip 安装</strong><br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">pip install frida <br>pip install frida-tools<br></code></pre></td></tr></table></figure><br><strong>node安装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs commandline">npm install frida <br></code></pre></td></tr></table></figure>
 <p>(注意，新版本的frida需要安装frida-tools)</p>
-<h2 id="2-手机安装frida-安装版本和本地版本一致"><a href="#2-手机安装frida-安装版本和本地版本一致" class="headerlink" title="2. 手机安装frida(安装版本和本地版本一致)"></a>2. 手机安装frida(安装版本和本地版本一致)</h2><p>下载对应版本<a target="_blank" rel="noopener" href="https://github.com/frida/frida/releases">frida-server</a>, 类似<strong>frida-server-15.1.27-android-arm.xz</strong>, 注意手机CPU架构, 上传手机/data/local/tmp 目录, 启动服务<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell getprop ro.product.cpu.abi // 查看手机CPU架构<br>adb push ./frida-server-15.1.27-android-arm /data/local/tmp // 上传frida-server<br></code></pre></td></tr></table></figure></p>
+<h2 id="2-手机安装frida-🔺️安装版本和本地版本一致"><a href="#2-手机安装frida-🔺️安装版本和本地版本一致" class="headerlink" title="2. 手机安装frida(🔺️安装版本和本地版本一致)"></a>2. 手机安装frida(🔺️安装版本和本地版本一致)</h2><p>下载对应版本<a target="_blank" rel="noopener" href="https://github.com/frida/frida/releases">frida-server</a>, 类似<strong>frida-server-15.1.27-android-arm.xz</strong>, 注意手机CPU架构, 上传手机/data/local/tmp 目录<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell getprop ro.product.cpu.abi // 查看手机CPU架构<br>adb push ./frida-server-15.1.27-android-arm /data/local/tmp // 上传frida-server<br></code></pre></td></tr></table></figure></p>
 <h2 id="3-启动服务"><a href="#3-启动服务" class="headerlink" title="3. 启动服务"></a>3. 启动服务</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs commandline">adb shell <br>su <br>cd /data/local/tmp<br>chmod 777 frida-server-15.1.27-android-arm<br>./frida-server-15.1.27-android-arm<br></code></pre></td></tr></table></figure>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 

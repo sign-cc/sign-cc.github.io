@@ -18,24 +18,24 @@
   <meta name="author" content="SignCc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="&#96;&#96; 1、 静态方法123456789 Java.perform(function () &amp;#123;    let example &#x3D; Java.use(&quot;com.sign.activity.specialClass.Example&quot;)    example.static_method.implementation &#x3D; function (a, b) &amp;#123;">
+    <meta name="description" content="1、HTTPS工作原理及简介 2、HTTPS抓包原理(中间人攻击)我们熟悉的 Fiddler、Charles 和 HttpCanary App 等抓包工具，其实都是采用了中间人攻击（Man-in-the-MiddleAttack，MITM）的方案： 将客户端的网络流量代理到 MITM 主机，再通过一系列的面板或工具将网络请求结构化地呈现出来。如果拦截的是 HTTP 请求还好说，要是拦截的是 HTT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Frida基本hook">
-<meta property="og:url" content="https://sign-cc.github.io/posts/a9c3d13e/index.html">
+<meta property="og:title" content="App抓包原理及SSL Pinning绕过">
+<meta property="og:url" content="https://sign-cc.github.io/posts/421051f1/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="&#96;&#96; 1、 静态方法123456789 Java.perform(function () &amp;#123;    let example &#x3D; Java.use(&quot;com.sign.activity.specialClass.Example&quot;)    example.static_method.implementation &#x3D; function (a, b) &amp;#123;">
+<meta property="og:description" content="1、HTTPS工作原理及简介 2、HTTPS抓包原理(中间人攻击)我们熟悉的 Fiddler、Charles 和 HttpCanary App 等抓包工具，其实都是采用了中间人攻击（Man-in-the-MiddleAttack，MITM）的方案： 将客户端的网络流量代理到 MITM 主机，再通过一系列的面板或工具将网络请求结构化地呈现出来。如果拦截的是 HTTP 请求还好说，要是拦截的是 HTT">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sign-cc.github.io/posts/a9c3d13e/img.png">
-<meta property="article:published_time" content="2022-07-06T08:29:52.000Z">
-<meta property="article:modified_time" content="2023-01-11T02:12:55.548Z">
+<meta property="og:image" content="https://sign-cc.github.io/posts/421051f1/1.png">
+<meta property="og:image" content="https://sign-cc.github.io/posts/421051f1/2.jpg">
+<meta property="article:published_time" content="2023-02-20T03:17:09.000Z">
+<meta property="article:modified_time" content="2023-02-20T07:27:20.797Z">
 <meta property="article:author" content="SignCc">
-<meta property="article:tag" content="Frida Hook">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://sign-cc.github.io/posts/a9c3d13e/img.png">
+<meta name="twitter:image" content="https://sign-cc.github.io/posts/421051f1/1.png">
   
   
   
-  <title>Frida基本hook - </title>
+  <title>App抓包原理及SSL Pinning绕过 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Frida基本hook"></span>
+            <span id="subtitle" data-typed-text="App抓包原理及SSL Pinning绕过"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-06 16:29" pubdate>
-          2022年7月6日 下午
+        <time datetime="2023-02-20 11:17" pubdate>
+          2023年2月20日 上午
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.6k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          9 分钟
+          14 分钟
         
       </span>
     
@@ -280,17 +280,56 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Frida基本hook</h1>
+            <h1 style="display: none">App抓包原理及SSL Pinning绕过</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="img.png" srcset="/img/loading.gif" lazyload alt="静态方法"><br>``</p>
-<h3 id="1、-静态方法"><a href="#1、-静态方法" class="headerlink" title="1、 静态方法"></a>1、 静态方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">let</span> example = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.sign.activity.specialClass.Example&quot;</span>)<br>    example.<span class="hljs-property">static_method</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) &#123;<br>        <span class="hljs-keyword">let</span> res = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">static_method</span>(a, b)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;a&quot;</span>, a, <span class="hljs-string">&quot;b&quot;</span>, b, <span class="hljs-string">&quot;res&quot;</span>, res)<br>        <span class="hljs-keyword">return</span> res<br>    &#125;<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+                <h3 id="1、HTTPS工作原理及简介"><a href="#1、HTTPS工作原理及简介" class="headerlink" title="1、HTTPS工作原理及简介"></a>1、HTTPS工作原理及简介</h3><p><img src="1.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2、HTTPS抓包原理-中间人攻击"><a href="#2、HTTPS抓包原理-中间人攻击" class="headerlink" title="2、HTTPS抓包原理(中间人攻击)"></a>2、HTTPS抓包原理(中间人攻击)</h3><p>我们熟悉的 <strong>Fiddler、Charles 和 HttpCanary App 等抓包工具，其实都是采用了中间人攻击（Man-in-the-MiddleAttack，MITM）的方案</strong>： 将客户端的网络流量代理到 MITM 主机，再通过一系列的面板或工具将网络请求结构化地呈现出来。<br>如果拦截的是 HTTP 请求还好说，要是拦截的是 HTTPS 请求，首先就遇到第一个问题 </p>
+<p>—— <strong>加密</strong>：<br>    加密： 由于 HTTPS 通信中对称密钥 Master Secret 只有通信双方才持有，MITM 无法解密密文，导致在抓包工具上也只能看到一堆无意义的乱码。</p>
+<p>要解决这个问题，只能想办法让 MITM 也获得这个对称密钥。此时，MITM 不仅要做流量拦截，还需要伪装成真实的客户端和服务端，与真实的通信双方分别建立独立的连接。我们来看下在中间人攻击下，HTTPS 的三阶段：</p>
+<p>连接 1：客户端与中间人的 HTTPS 连接：</p>
+<p>CA 证书校验： 客户端与 MITM 握手，MITM 返回一个 “调包” 的 CA 证书（为了让客户端验证 CA 证书通过，需要提前在系统上安装 MITM 的证书）；<br>密钥协商： 客户端和 MITM 基于 “调包” 的公钥和私钥进行非对称加密通信，协商获得对称密钥；<br>数据传输： 客户端和 MITM 基于协商的对称密钥进行对称加密通信，此时 MITM 就可以解密出明文。</p>
+<p>连接 2：中间人与服务端的 HTTPS 连接：</p>
+<p>CA 证书校验： MITM 与 服务端握手，服务端返回 CA 证书，由于服务端证书本来就是合法的，因此 MITM 可以拿到服务端公钥；<br>密钥协商： MITM 和服务端分别基于公钥和私钥进行非对称加密通信，协商获得 Master Secret 对称加密私钥；<br>数据传输： MITM 和服务端基于协商的对称密钥进行对称加密通信。</p>
+<p><img src="2.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、SSL-Pinning"><a href="#3、SSL-Pinning" class="headerlink" title="3、SSL Pinning"></a>3、SSL Pinning</h3><p>SSL Pinning是一种防止中间人攻击的技术，主要机制是客户端发起请求-&gt;收到服务器发来的证书进行校验，如果收到的证书不被客户端信任，就直接断开连接不继续请求。<br>MITM中间人攻击要点就是伪造了一个假的服务端证书给了客户端，客户端误以为真。解决思路就是将客户端app内也预置一份服务端证书进行比较。</p>
+<p>SSL-Pinning校验方式：</p>
+<p>1、 证书锁定</p>
+<pre><code class="hljs">需要在客户端代码内置仅接受指定域名的证书，而不接受操作系统或浏览器内置的CA根证书对应的任何证书，通过
+这种授权方式，保障了App与服务端通信的唯一性和安全性，因此客户端和服务端之间的通信是可以保证绝对安全。
+但CA证书签发都存在有效期问题，缺点是证书续期后需要将证书重新内置到App中
+</code></pre>
+<p>2、公钥锁定</p>
+<pre><code class="hljs">提取证书中的公钥并内置到客户端中，通过与服务器对比公钥值来验证连接的正确性。制作证书秘钥时，公钥在证
+书的续期前后都可以保持不变(即秘钥对不变)，所以可以避免证书有效期问题，比较推荐。
+</code></pre>
+<h3 id="4、SSL-Pinning-绕过方案"><a href="#4、SSL-Pinning-绕过方案" class="headerlink" title="4、SSL-Pinning 绕过方案"></a>4、SSL-Pinning 绕过方案</h3><p>1、方案1(不需要root)</p>
+<p><strong>修改原有app smali代码。</strong></p>
+<p>思路：</p>
+<pre><code class="hljs">反编译apk,找到校验证书方法,改变返回值。再编译apk，抓包。
+public void checkClientTrusted(X509Certificate[] ...)&#123;...&#125;
+public void checkServerTrusted(X509Certificate[] ...)&#123;...&#125;
+</code></pre>
+<p>利用条件：</p>
+<pre><code class="hljs">客户端app内未做签名校验。
+</code></pre>
+<p>2、方案2(需要root)</p>
+<p><strong>Xposed+JustTrustMe绕过</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Fuzion24/JustTrustMe">JustTrustMe</a>简介:</p>
+<pre><code class="hljs">JustTrustMe一个用来禁用、绕过SSL证书校验的基于XPosed模块。原理就是将APK中所有用于校验SSL证书的API
+都进行了Hook，从而绕过检测。
+</code></pre>
+<p>3、方案3<br><strong>Frida绕过</strong></p>
+<h3 id="4、特殊情况"><a href="#4、特殊情况" class="headerlink" title="4、特殊情况"></a>4、特殊情况</h3><pre><code class="hljs">1、淘宝
+    spdy协议        
 
-<h3 id="2、-实例方法"><a href="#2、-实例方法" class="headerlink" title="2、 实例方法"></a>2、 实例方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">choose</span>(<span class="hljs-string">&quot;com.sign.activity.specialClass.Example&quot;</span>, &#123;<br>        <span class="hljs-attr">onMatch</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">instance</span>) &#123;<br>            instance.<span class="hljs-title function_">instance_method</span>()<br>        &#125;,<br>        <span class="hljs-attr">onComplete</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        &#125;<br>    &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-<h3 id="3、重载方法"><a href="#3、重载方法" class="headerlink" title="3、重载方法"></a>3、重载方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">let</span> example = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.sign.activity.specialClass.Example&quot;</span>)<br>    example.<span class="hljs-property">overload_method</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&quot;java.lang.String&quot;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">str</span>)&#123;<br>        <span class="hljs-keyword">let</span> res = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">overload_method</span>(str);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;str: &quot;</span>, str, <span class="hljs-string">&quot;res: &quot;</span>, res)<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    example.<span class="hljs-property">overload_method</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&quot;int&quot;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">arg</span>) &#123;<br>        <span class="hljs-keyword">let</span> res = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">overload_method</span>(<span class="hljs-number">2</span>)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;arg: &quot;</span>, arg, <span class="hljs-string">&quot;res: &quot;</span>, res)<br>        <span class="hljs-keyword">return</span> res<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+2、抖音
+    SSL_CTX_set_custom_verify
+</code></pre>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
               </div>
             
@@ -308,22 +347,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Hook%E6%A1%86%E6%9E%B6/" class="category-chain-item">Hook框架</a>
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Hook%E6%A1%86%E6%9E%B6/Frida/" class="category-chain-item">Frida</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Hook%E6%A1%86%E6%9E%B6/Frida/Hook%E8%84%9A%E6%9C%AC/" class="category-chain-item">Hook脚本</a>
-  
-  
-
-  
-
   
 
       </span>
@@ -334,13 +359,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Frida-Hook/">#Frida Hook</a>
-      
-    </div>
-  
 </div>
 
 
@@ -349,8 +367,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Frida基本hook</div>
-      <div>https://sign-cc.github.io/posts/a9c3d13e/</div>
+      <div>App抓包原理及SSL Pinning绕过</div>
+      <div>https://sign-cc.github.io/posts/421051f1/</div>
     </div>
     <div class="license-meta">
       
@@ -362,7 +380,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月6日</div>
+          <div>2023年2月20日</div>
         </div>
       
       
@@ -392,18 +410,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/298c61fb/" title="Art/ArtMethod/RegisterNative">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Art/ArtMethod/RegisterNative</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/96901429/" title="Frida安装">
-                        <span class="hidden-mobile">Frida安装</span>
+                      <a href="/posts/85029a3a/" title="Frida-反反调试">
+                        <span class="hidden-mobile">Frida-反反调试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
